@@ -13,541 +13,555 @@
 	<title>Grafischer Befehl</title>
 
 	<style type="text/css">
-		#Digigruppe {
-			height: 55px;
-		}
-
-		#LinienGB {
-			position: absolute;
-			display: block;
-			width: 1000px;
-			height: 500px;
-			top: 0px;
-			left: 0px;
-			z-index: -100;
-		}
-
-		#BAOplus {
-			position: absolute;
-			display: visible;
-			left: 215px;
-			top: 15px;
-			text-align: center;
-			font-size: 30px;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#Papierkorb {
-			position: absolute;
-			display: none;
-			left: 15px;
-			border: dotted thin red;
-			top: 63px;
-			text-align: center;
-			font-size: 30px;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#Schere {
-			position: absolute;
-			display: none;
-			left: 65px;
-			border: dotted thin green;
-			top: 63px;
-			text-align: center;
-			font-size: 30px;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-
-		#Imp {
-			position: absolute;
-			left: 165px;
-			top: 15px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#Exp {
-			position: absolute;
-			left: 115px;
-			top: 15px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#Speichern {
-			position: absolute;
-			left: 65px;
-			top: 15px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-
-		#NEU {
-			position: absolute;
-			left: 15px;
-			top: 15px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#Übersicht {
-			position: absolute;
-			left: 265px;
-			top: 15px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-			margin: 0px;
-			z-index: 500;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		.KMEintrag {
-			background-color: #f9f9f9;
-		}
-
-		.KMEintrag:hover {
-			background-color: rgba(200, 200, 200, 0.888);
-		}
-
-		.contextMenu {
-			display: none;
-			position: absolute;
-			background-color: #f9f9f9;
-			border: 1px solid #ccc;
-			padding: 8px;
-			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-			z-index: 500;
-		}
-
-		.plus {
-			width: 45px;
-			height: 45px;
-			margin: 5px;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		#addPlus {
-			position: absolute;
-			left: 957px;
-			font-size: 30px;
-		}
-
-		#Stift {
-			position: absolute;
-			left: 5px;
-			font-size: 20px;
-		}
-
-		#BAO_gesamt {
-			position: absolute;
-			left: 55px;
-			text-align: center;
-			font-size: 14px;
-			font-weight: bold;
-		}
-
-		#Export {
-			position: absolute;
-			left: 200px;
-		}
-
-		#LinieGB {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			height: 100%;
-			width: 100%;
-		}
-
-		.EAFÜGr {
-			border: 1px solid;
-			border-bottom: none;
-			padding: 5px;
-			text-align: left;
-			font-size: 12px;
-			grid-row: 1 / 1;
-			margin: 0px 5px;
-		}
-
-		.EAFÜGr:hover {
-			background-color: rgba(200, 200, 200, 0.888);
-			;
-		}
-
-		.EAEinzelA {
-			border: 1px solid;
-			padding: 5px;
-			text-align: left;
-			font-size: 12px;
-			grid-row: 2 / 2;
-			margin: 0px 5px;
-		}
-
-
-		.EAZeile {
-			display: grid;
-			grid-template-columns: repeat(6, minmax(auto, auto));
-			grid-template-rows: repeat(3, auto);
-			/*grid-gap: 15px;*/
-		}
-
-		.EADigi {
-			grid-row: 3 / 3;
-			text-align: center;
-		}
-
-		.EAKnöpfe {
-			grid-row: 4 / 4;
-			text-align: center;
-			margin: 15px;
-		}
-
-		.EABlockÜberschrift {
-			text-align: center;
-			color: white;
-			background-color: rgb(0 34 102);
-			font-size: 14px;
-			font-weight: bold;
-			padding: 5px 5px;
-		}
-
-		.EABlockInhalt {
-			text-align: center;
-			font-size: 12px;
-			padding: 0px 5px;
-		}
-
-		.Block {
-			padding: 0px 5px;
-			display: table-cell;
-			position: relative;
-			z-index: 260;
-		}
-
-		.Kasten {
-			margin: 20px;
-			border: solid rgb(0 34 102) thin;
-			width: max-content;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.Kasten:hover {
-			background-color: rgba(200, 200, 200, 0.888);
-		}
-
-		#BAOFenster {
-			visibility: hidden;
-			padding: 10px;
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			z-index: 250;
-		}
-
-		#BAOSchließen {
-			position: absolute;
-			left: 10px;
-			top: 10px;
-		}
-
-		#Linie {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			height: 100%;
-			width: 100%;
-			z-index: 100;
-		}
-
-		#BAOGrafik {
-			z-index: 260;
-		}
 
-		#FEM {
-			height: 50px;
-			width: 100%;
-		}
-
-		#EAnlass {
-			height: 50px;
-			width: 300px;
-		}
-
-		#Kräfte {
-			width: 100%;
-			height: 50px;
-		}
-
-		#FüGrKräfte {
-			width: 100%;
-			height: 50px;
-		}
-
-		#SpalteEinzelaufträge {
-			width: 220px;
-		}
-
-		#Einzelaufträge {
-			width: 300px;
-			height: 365px;
-		}
-
-		#UASMH {
-			width: 250px;
-			height: 443px;
-		}
-
-		.center {
-			text-align: center;
-		}
-
-		pre {
-			white-space: pre-wrap;
-			font-family: arial;
-			margin: 0px;
-		}
-
-		p {
-			font-size: 12px;
-		}
-
-		p.digi {
-			text-align: center;
-			margin-top: -24px;
-			margin-bottom: 15px;
-			font-size: 12px;
-			text-align: center;
-		}
-
-		hr.nichtdrucken {
-			@media print {
-				display: none;
-			}
-		}
-
-		.EAKnopf {
-			width: 80%;
-			margin: 5px;
-			border: none;
-			font-size: 12px;
-			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			border-radius: 3px;
-			background-color: rgb(192 0 34);
-			color: white;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		body {
-			font-family: Arial;
-			display: flex;
-		}
-
-		#Dienststelle {
-			font-size: 15px;
-			font-weight: normal;
-			text-align: left;
-			margin: 0px;
-		}
-
-		#Überschrift {
-			font-size: 20px;
-			font-weight: bold;
-			text-align: center;
-			margin: 0px;
-		}
-
-		#Stand {
-			text-align: right;
-			font-size: 10px;
-			vertical-align: top;
-		}
-
-		#Seite {
-			width: 1000px;
-			height: 700px;
-			padding: 0;
-			z-index: 200;
-		}
+	<!-- Schriften -->
+
+	body {
+		font-family:
+		Arial;
+		display:
+		flex;
+	}
+		
+	pre {
+		white-space: pre-wrap;
+		font-family: arial;
+		margin: 0px;
+	}
+		
+	p {
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	li {
+		font-size: 12px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	p.digi {
+		text-align: center;
+		margin-top: -24px;
+		margin-bottom: 15px;
+		font-size: 12px;
+		text-align: center;
+	}
+
+	hr.nichtdrucken {
+		@media
+		print {
+		display: none;
+		}
+	}
+
+	<!-- Seiten -->
+
+	#Seite {
+	width: 1000px;
+	height: 700px;
+	padding: 0;
+	z-index: 200;
+	}
+
+	#BAOFenster {
+	visibility: hidden;
+	padding: 10px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 250;
+	}
+
+	#Formular {
+	margin: 10px;
+	border: solid black thin;
+	background-color: rgb(207 220 229);
+	visibility: hidden;
+	padding: 20px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 300;
+	}
+
+	#Import {
+	margin: 10px;
+	border: solid black thin;
+	background-color: rgb(194 159 99);
+	visibility: hidden;
+	padding: 20px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 400;
+	}
+
+	#Infobox {
+	width: 600px;
+	position: absolute;
+	padding: 0;
+	z-index: 200;
+	background-color: aquamarine;
+	}
+
+	#Toolbox {
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	padding: 0;
+	z-index: 200;
+	background-color: aqua;
+	}
+
+	<!-- Toolboxelemente -->
+
+	#Schere {
+	position: absolute;
+	display: none;
+	left: 65px;
+	border: dotted thin green;
+	top: 63px;
+	text-align: center;
+	font-size: 30px;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Papierkorb {
+	position: absolute;
+	display: none;
+	left: 15px;
+	border: dotted thin red;
+	top: 63px;
+	text-align: center;
+	font-size: 30px;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	<!-- unsortiert -->
+
+	#Digigruppe {
+	height: 55px;
+	}
+
+	#LinienGB {
+	position: absolute;
+	display: block;
+	width: 1000px;
+	height: 500px;
+	top: 0px;
+	left: 0px;
+	z-index: -100;
+	}
+
+	#BAOplus {
+	position: absolute;
+	display: visible;
+	left: 215px;
+	top: 15px;
+	text-align: center;
+	font-size: 30px;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Imp {
+	position: absolute;
+	left: 165px;
+	top: 15px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Exp {
+	position: absolute;
+	left: 115px;
+	top: 15px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Speichern {
+	position: absolute;
+	left: 65px;
+	top: 15px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#NEU {
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Übersicht {
+	position: absolute;
+	left: 265px;
+	top: 15px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px;
+	z-index: 500;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	.KMEintrag {
+	background-color: #f9f9f9;
+	}
+
+	.KMEintrag:hover {
+	background-color: rgba(200, 200, 200, 0.888);
+	}
+
+	.contextMenu {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	border: 1px solid #ccc;
+	padding: 8px;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+	z-index: 500;
+	}
+
+	.plus {
+	width: 45px;
+	height: 45px;
+	margin: 5px;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#addPlus {
+	position: absolute;
+	left: 957px;
+	font-size: 30px;
+	}
+
+	#Stift {
+	position: absolute;
+	left: 5px;
+	font-size: 20px;
+	}
+
+	#BAO_gesamt {
+	position: absolute;
+	left: 55px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+	#Export {
+	position: absolute;
+	left: 200px;
+	}
+
+	#LinieGB {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	}
+
+	.EAFÜGr {
+	border: 1px solid;
+	border-bottom: none;
+	padding: 5px;
+	text-align: left;
+	font-size: 12px;
+	grid-row: 1 / 1;
+	margin: 0px 5px;
+	}
+
+	.EAFÜGr:hover {
+	background-color: rgba(200, 200, 200, 0.888);
+	;
+	}
+
+	.EAEinzelA {
+	border: 1px solid;
+	padding: 5px;
+	text-align: left;
+	font-size: 12px;
+	grid-row: 2 / 2;
+	margin: 0px 5px;
+	}
+
+	.EAZeile {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(auto, auto));
+	grid-template-rows: repeat(3, auto);
+	/*grid-gap: 15px;*/
+	}
+
+	.EADigi {
+	grid-row: 3 / 3;
+	text-align: center;
+	}
+
+	.EAKnöpfe {
+	grid-row: 4 / 4;
+	text-align: center;
+	margin: 15px;
+	}
+
+	.EABlockÜberschrift {
+	text-align: center;
+	color: white;
+	background-color: rgb(0 34 102);
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 5px;
+	}
+
+	.EABlockInhalt {
+	text-align: center;
+	font-size: 12px;
+	padding: 0px 5px;
+	}
+
+	.Block {
+	padding: 0px 5px;
+	display: table-cell;
+	position: relative;
+	z-index: 260;
+	}
+
+	.Kasten {
+	margin: 20px;
+	border: solid rgb(0 34 102) thin;
+	width: max-content;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+	.Kasten:hover {
+	background-color: rgba(200, 200, 200, 0.888);
+	}
+
+	#BAOSchließen {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	}
+
+	#Linie {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	}
+
+	#BAOGrafik {
+	z-index: 260;
+	}
+
+	#FEM {
+	height: 50px;
+	width: 100%;
+	}
+
+	#EAnlass {
+	height: 50px;
+	width: 300px;
+	}
+
+	#Kräfte {
+	width: 100%;
+	height: 50px;
+	}
+
+	#FüGrKräfte {
+	width: 100%;
+	height: 50px;
+	}
+
+	#SpalteEinzelaufträge {
+	width: 220px;
+	}
+
+	#Einzelaufträge {
+	width: 300px;
+	height: 365px;
+	}
+
+	#UASMH {
+	width: 250px;
+	height: 443px;
+	}
+
+	.center {
+	text-align: center;
+	}
+
+	.EAKnopf {
+	width: 80%;
+	margin: 5px;
+	border: none;
+	font-size: 12px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+	background-color: rgb(192 0 34);
+	color: white;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	#Dienststelle {
+	font-size: 15px;
+	font-weight: normal;
+	text-align: left;
+	margin: 0px;
+	}
+
+	#Überschrift {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0px;
+	}
+
+	#Stand {
+	text-align: right;
+	font-size: 10px;
+	vertical-align: top;
+	}
+
+	#kopf {
+	display: flex;
+	font-size: 12px;
+	}
+
+	.kopfteil {
+	height: 100px;
+	border: 1px solid;
+	padding: 5px;
+	}
+
+	#Polizeiführer {
+	margin: 0px 10px 0px 10px;
+	width: 200px;
+	}
+
+	#Anlass {
+	width: 400px;
+	}
+
+	#Führungsgruppe {
+	width: 400px;
+	}
+
+	.digi {
+	font-size: 12px;
+	}
+
+	#SMH {
+	margin: 5px;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: left;
+	}
+
+	#menu {
+	margin: 5px;
+
+	@media print {
+	display: none;
+	}
+	}
+
+	.menubutton {
+	width: 100px;
+	margin: 5px 10px;
+	border: none;
+	font-size: 12px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+	background-color: rgb(0 34 102);
+	color: white;
+	}
+
+	.editorbutton {
+	width: 200px;
+	height: 40px;
+	margin: 10px 0px;
+	border: solid thin;
+	}
+
+	.Spalte1 {
+	width: 110px;
+	vertical-align: top;
+	text-align: right;
+	padding-right: 10px;
+	}
+
+	.Spalte2 {
+	width: 220px;
+	}
+
+	input {
+	width: 220px;
+	font-family: courier new;
+	}
 
-		#Infobox {
-			width: 600px;
-			position: absolute;
-			padding: 0;
-			z-index: 200;
-			background-color: aquamarine;
-		}
-
-		#Toolbox {
-			width: 200px;
-			height: 100px;
-			position: absolute;
-			padding: 0;
-			z-index: 200;
-			background-color: aqua;
-		}
-
-		#kopf {
-			display: flex;
-			font-size: 12px;
-		}
-
-		.kopfteil {
-			height: 100px;
-			border: 1px solid;
-			padding: 5px;
-		}
-
-		#Polizeiführer {
-			margin: 0px 10px 0px 10px;
-			width: 200px;
-		}
-
-		#Anlass {
-			width: 400px;
-		}
-
-		#Führungsgruppe {
-			width: 400px;
-		}
-
-		p {
-			margin: 0px;
-			padding: 0px;
-		}
-
-		.digi {
-			font-size: 12px;
-		}
 
-		#Formular {
-			margin: 10px;
-			border: solid black thin;
-			background-color: rgb(207 220 229);
-			visibility: hidden;
-			padding: 20px;
-			position: absolute;
-			left: 10px;
-			top: 10px;
-			z-index: 300;
-		}
-
-		#SMH {
-			margin: 5px;
-			font-size: 14px;
-			font-weight: normal;
-			text-align: left;
-		}
-
-		#menu {
-			margin: 5px;
-
-			@media print {
-				display: none;
-			}
-		}
-
-		.menubutton {
-			width: 100px;
-			margin: 5px 10px;
-			border: none;
-			font-size: 12px;
-			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			border-radius: 3px;
-			background-color: rgb(0 34 102);
-			color: white;
-		}
-
-		.editorbutton {
-			width: 200px;
-			height: 40px;
-			margin: 10px 0px;
-			border: solid thin;
-		}
-
-		.Spalte1 {
-			width: 110px;
-			vertical-align: top;
-			text-align: right;
-			padding-right: 10px;
-		}
-
-		.Spalte2 {
-			width: 220px;
-		}
-
-		input {
-			width: 220px;
-			font-family: courier new;
-		}
-
-		#Import {
-			margin: 10px;
-			border: solid black thin;
-			background-color: rgb(194 159 99);
-			visibility: hidden;
-			padding: 20px;
-			position: absolute;
-			left: 10px;
-			top: 10px;
-			z-index: 400;
-		}
 	</style>
 
 	<style type="text/css">
@@ -1089,7 +1103,8 @@
 			<li>einfache und selbsterklärende Bedienung</li>
 			<li>Darstellung und Erstellung von große BAO mit mehreren Ebenen (EA/UA/UUA/UUUA etc.)</li>
 			<li>Darstellung von mehreren BAO gleichzeitig nebeneinander</li>
-			<li>Umgliederung im laufenden Einsatz per "Drag and Drop" bei automatischer Anpassung der Grafischen Befehle</li>
+			<li>Umgliederung im laufenden Einsatz per "Drag and Drop" bei automatischer Anpassung der Grafischen Befehle
+			</li>
 			<li>keine Formatierungen von Texten oder grafischen Elementen</li>
 			<li>Dokumentation von laufenden Einsätzen bei Umstrukturierungen der BAO</li>
 			<li>Dokumentation der erteilten Einzelaufträgen im laufenden Einsatz</li>
