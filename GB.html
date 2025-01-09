@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="de">
+	
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="noindex" name="robots">
+		<meta content="nofollow" name="robots">
+		<meta content="no-cache" http-equiv="cache-control">
+		<meta content="EPHK Schommer, Marcel, A 45/4, marcel.schommer@polizei.berlin.de" name="author">
+		<meta content="(c)2025 - Polizei Berlin" name="copyright">
+		<title>Grafischer Befehl</title>
+		
 
-<head>
-
-	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<meta content="noindex" name="robots">
-	<meta content="nofollow" name="robots">
-	<meta content="no-cache" http-equiv="cache-control">
-	<meta content="EPHK Schommer, Marcel, A 45/4, marcel.schommer@polizei.berlin.de" name="author">
-	<meta content="(c)2024 - Polizei Berlin" name="copyright">
-	<title>Grafischer Befehl</title>
-
-	<style type="text/css">
-
-	<!-- Schriften -->
+<style type="text/css"> 
+	
+	
+/* Schriften */
 
 	body {
-		font-family: Arial;
+    	font-family:  arial;
 		display: flex;
 	}
-		
+	
 	pre {
 		white-space: pre-wrap;
 		font-family: arial;
@@ -47,15 +48,9 @@
 		text-align: center;
 	}
 
-	hr.nichtdrucken {
-		@media
-		print {
-		display: none;
-		}
-	}
 
-	<!-- Seiten -->
-
+/* Seiten */
+	
 	#Seite {
 	width: 1000px;
 	height: 700px;
@@ -96,25 +91,46 @@
 	z-index: 400;
 	}
 
-	#Infobox {
+	#InfoBox {
 	width: 600px;
+	height: 600px;	
 	position: absolute;
-	padding: 0;
-	z-index: 200;
-	background-color: aquamarine;
+	top: 10px;
+    left: 10px;
+	padding: 15px;
+	overflow: auto;
+	z-index: 1200;
+	background-color: rgb(207, 220, 229);
+	visibility: hidden;	
 	}
 
 	#Toolbox {
-	width: 200px;
-	height: 100px;
-	position: absolute;
+	position: absolute;	
+	top: 50px;
+    left: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
 	padding: 0;
-	z-index: 200;
-	background-color: aqua;
+	z-index: 600;
+	border: solid thin;
+	background-color: rgba(220, 220, 220, 0.5);
 	}
 
-	<!-- Toolboxelemente -->
+/* Toolboxelemente */
 
+	.plus {
+	width: 45px;
+	height: 45px;
+	margin: 5px;
+	text-align: center;	
+	background-color: rgb(240, 240, 240)
+	border-width: 1px;	
+    }
+
+	
 	#Schere {
 	position: absolute;
 	display: none;
@@ -125,14 +141,10 @@
 	font-size: 30px;
 	margin: 0px;
 	z-index: 500;
-
-	@media print {
-	display: none;
-	}
 	}
 
 	#Papierkorb {
-	position: absolute;
+	position: absolute;	
 	display: none;
 	left: 15px;
 	border: dotted thin red;
@@ -141,13 +153,66 @@
 	font-size: 30px;
 	margin: 0px;
 	z-index: 500;
-
-	@media print {
-	display: none;
 	}
+	
+	#Stift {
+	font-size: 20px;	
+	}	
+	
+	#BAO_gesamt {
+	font-size: 14px;
+	font-weight: bold;
+	}
+	
+	#addPlus {
+	font-size: 30px;
 	}
 
-	<!-- unsortiert -->
+	#NEU {
+	font-size: 14px;
+	font-weight: bold;
+	}
+	
+	#GB {
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+	#Speichern {
+	font-size: 14px;
+	font-weight: bold;
+	}
+	
+	#Exp {
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+	#Imp {
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+	#BAOplus {
+	font-size: 30px;
+	}
+
+	#Übersicht {
+	font-size: 14px;
+	font-weight: bold;
+	}
+	
+	#InfoBoxButton {
+	font-size: 30px;
+	font-family: "Brush Script MT", cursive;
+	}
+	
+	#InfoBoxSchließenButton {
+	font-size: 20px;
+	font-weight: bold;
+	}
+	
+/* unsortiert */
 
 	#Digigruppe {
 	height: 55px;
@@ -162,97 +227,7 @@
 	left: 0px;
 	z-index: -100;
 	}
-
-	#BAOplus {
-	position: absolute;
-	display: visible;
-	left: 215px;
-	top: 15px;
-	text-align: center;
-	font-size: 30px;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#Imp {
-	position: absolute;
-	left: 165px;
-	top: 15px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#Exp {
-	position: absolute;
-	left: 115px;
-	top: 15px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#Speichern {
-	position: absolute;
-	left: 65px;
-	top: 15px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#NEU {
-	position: absolute;
-	left: 15px;
-	top: 15px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#Übersicht {
-	position: absolute;
-	left: 265px;
-	top: 15px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0px;
-	z-index: 500;
-
-	@media print {
-	display: none;
-	}
-	}
-
+	
 	.KMEintrag {
 	background-color: #f9f9f9;
 	}
@@ -269,36 +244,6 @@
 	padding: 8px;
 	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 	z-index: 500;
-	}
-
-	.plus {
-	width: 45px;
-	height: 45px;
-	margin: 5px;
-
-	@media print {
-	display: none;
-	}
-	}
-
-	#addPlus {
-	position: absolute;
-	left: 957px;
-	font-size: 30px;
-	}
-
-	#Stift {
-	position: absolute;
-	left: 5px;
-	font-size: 20px;
-	}
-
-	#BAO_gesamt {
-	position: absolute;
-	left: 55px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
 	}
 
 	#Export {
@@ -359,7 +304,7 @@
 	.EABlockÜberschrift {
 	text-align: center;
 	color: white;
-	background-color: rgb(0 34 102);
+	background-color: rgb(0, 34, 102);
 	font-size: 14px;
 	font-weight: bold;
 	padding: 5px 5px;
@@ -380,7 +325,7 @@
 
 	.Kasten {
 	margin: 20px;
-	border: solid rgb(0 34 102) thin;
+	border: solid rgb(0, 34, 102) thin;
 	width: max-content;
 	margin-left: auto;
 	margin-right: auto;
@@ -454,12 +399,9 @@
 	font-size: 12px;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	border-radius: 3px;
-	background-color: rgb(192 0 34);
+	background-color: rgb(192, 0, 34);
 	color: white;
 
-	@media print {
-	display: none;
-	}
 	}
 
 	#Dienststelle {
@@ -517,13 +459,6 @@
 	text-align: left;
 	}
 
-	#menu {
-	margin: 5px;
-
-	@media print {
-	display: none;
-	}
-	}
 
 	.menubutton {
 	width: 100px;
@@ -557,599 +492,498 @@
 	input {
 	width: 220px;
 	font-family: courier new;
-	}
-
-
+	}		
+	
+/* nicht druckbare Elemente */
+	@media print {
+ 		hr.nichtdrucken,
+		#Toolbox
+		{
+        display: none;
+    	}
+	}	
+		
 	</style>
-
-</head>
-
-<body ea-data="[{&quot;ENr&quot;:11,&quot;UANr&quot;:[22,33,55],&quot;darüber&quot;:&quot;&quot;,&quot;EBezeichnung&quot;:&quot;Einsatzleitung&quot;,&quot;EDatum&quot;:&quot;01.01.2024&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am 07.09.2023 - \&quot;Zwangsräumung von Reinhard verhindern!\&quot;&quot;,&quot;EFührer&quot;:&quot;EPHK Super, A 49/4&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;0170 55 10 566&quot;,&quot;EFRufname&quot;:&quot;Senta 919&quot;,&quot;EDigi&quot;:&quot;A 49/1&quot;,&quot;LFüGr&quot;:&quot;PHKin Witzig, A 49/41&quot;,&quot;FüGrRufname&quot;:&quot;Senta 924&quot;,&quot;FüGrTelefon&quot;:&quot;0173 2058776&quot;,&quot;FüGrKräfte&quot;:&quot;-/1 A 49&quot;,&quot;Kräfte&quot;:&quot;&quot;,&quot;MZMO&quot;:&quot;15:00 - A 49&quot;,&quot;EZEO&quot;:&quot;17:00 - Einsatzraum&quot;,&quot;FEM&quot;:&quot;Eigene, DibA&quot;,&quot;Einzelaufträge&quot;:&quot;- Freihalten des angeordneten Halteverbotes, \n - ggf. Veranlassung von Umsetzungen, \n - Offene und verdeckte Aufklärung im Nahbereich des Kundgebungsortes: Meldung von relevanten Auffälligkeiten mit Bezug zur Kundgebung, \n- Raumschutz auf den Wegen zum Kundgebungsort mit Fokus auf den ÖPNV (Bushaltestellen, S-Bhf Botanischer Garten und S-Bhf Steglitz), \n- Begleiten von relevanten Personengruppen, \n- Kontrolle der ASG Depots (Zugänglich? Fahrräder angeschlossen?), \n- auf Weisung: Unterstützung EA Kundgebung&quot;,&quot;SMH&quot;:&quot;Hallo&quot;},{&quot;ENr&quot;:22,&quot;UANr&quot;:[],&quot;darüber&quot;:11,&quot;EBezeichnung&quot;:&quot;EA Voraufsicht/Raumschutz&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am xx.xx.2023 - Zwangsräumung von Reinhard verhindern! -&quot;,&quot;EFührer&quot;:&quot;A 49/9&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;&quot;,&quot;EFRufname&quot;:&quot;S921&quot;,&quot;EDigi&quot;:&quot;A 49/1&quot;,&quot;LFüGr&quot;:&quot;&quot;,&quot;FüGrRufname&quot;:&quot;&quot;,&quot;FüGrTelefon&quot;:&quot;&quot;,&quot;FüGrKräfte&quot;:&quot;&quot;,&quot;Kräfte&quot;:&quot;-/2 A 49/9&quot;,&quot;MZMO&quot;:&quot;&quot;,&quot;EZEO&quot;:&quot;15:00 - Einsatzraum&quot;,&quot;FEM&quot;:&quot;VP-Variable \n eigene \n ausreichend Funktgeräte&quot;,&quot;Einzelaufträge&quot;:&quot;- Freihalten des angeordneten Halteverbotes, \n - ggf. Veranlassung von Umsetzungen, \n - Offene und verdeckte Aufklärung im Nahbereich des Kundgebungsortes: Meldung von relevanten Auffälligkeiten mit Bezug zur Kundgebung, \n- Raumschutz auf den Wegen zum Kundgebungsort mit Fokus auf den ÖPNV (Bushaltestellen, S-Bhf Botanischer Garten und S-Bhf Steglitz), \n- Begleiten von relevanten Personengruppen, \n- Kontrolle der ASG Depots (Zugänglich? Fahrräder angeschlossen?), \n- auf Weisung: Unterstützung EA Kundgebung&quot;,&quot;SMH&quot;:&quot;Was soll ich hier schreiben...&quot;},{&quot;ENr&quot;:33,&quot;UANr&quot;:[44,66],&quot;darüber&quot;:11,&quot;EBezeichnung&quot;:&quot;EA Verkehrsmaßnahmen&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am xx.xx.2023 - Zwangsräumung von Reinhard verhindern! -&quot;,&quot;EFührer&quot;:&quot;PHK Mustermann&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;&quot;,&quot;EFRufname&quot;:&quot;Senta 670&quot;,&quot;EDigi&quot;:&quot;A 46/1&quot;,&quot;LFüGr&quot;:&quot;&quot;,&quot;FüGrRufname&quot;:&quot;&quot;,&quot;FüGrTelefon&quot;:&quot;&quot;,&quot;FüGrKräfte&quot;:&quot;&quot;,&quot;Kräfte&quot;:&quot;-/3 A 46&quot;,&quot;MZMO&quot;:&quot;17:00 Uhr - A 49&quot;,&quot;EZEO&quot;:&quot;17:30 Uhr  - Einsatzraum&quot;,&quot;FEM&quot;:&quot;VP-Variable \n eigene \n ausreichend Funktgeräte&quot;,&quot;Einzelaufträge&quot;:&quot;Vorbereitung und auf Weisung Errichtung von Verkehrssperren mit Ziel der Herstellung eines verkehrsfeien Raumes \n- Manteuffelstr. zwischen Moltkestr. und Augustaplatz (mit Nachsperren am Kundgebungsort), gesamten Kreuzungsbereich Manteuffelstr./Moltkestr. (mit Nachsperren am Kundgebungsort) \n- Solange der Straßenverkehr läuft: Sicherung der ASG-Line für den Fahrzeugverkehr&quot;,&quot;SMH&quot;:&quot;Was soll ich hier schreiben...&quot;},{&quot;ENr&quot;:44,&quot;UANr&quot;:[],&quot;darüber&quot;:33,&quot;EBezeichnung&quot;:&quot;EA Kundgebung&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am xx.xx.2023 - Zwangsräumung von Reinhard verhindern! -&quot;,&quot;EFührer&quot;:&quot;POKin Max&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;&quot;,&quot;EFRufname&quot;:&quot;Senta 770&quot;,&quot;EDigi&quot;:&quot;A 47/1&quot;,&quot;LFüGr&quot;:&quot;&quot;,&quot;FüGrRufname&quot;:&quot;&quot;,&quot;FüGrTelefon&quot;:&quot;&quot;,&quot;FüGrKräfte&quot;:&quot;&quot;,&quot;Kräfte&quot;:&quot;-/3 A 47&quot;,&quot;MZMO&quot;:&quot;17:00 Uhr - A 49&quot;,&quot;EZEO&quot;:&quot;17:30 Uhr  - Einsatzraum&quot;,&quot;FEM&quot;:&quot;VP-Variable \n eigene \n ausreichend Funktgeräte&quot;,&quot;Einzelaufträge&quot;:&quot;- Stellen eines Verbindungskraft zur Kundgebungsleitung, Auf- und Abbau AGS, gem. Aufstellplan, \n- Zählen und Melden der Teilnehmer, \n- Melden Beginn und Ende der Kundgebung, \n- Gewährleisten eines störungsfreien Verlaufes, \n- Darauf achten, dass Lautsprecher nur zu Beschallung der Versammlung und nicht der Umgebung eingesetzt werden., \n- Verhinderung und Verfolgung von Straftaten und Ordnungswidrigkeiten aus der Kundgebung heraus. Maßnahmen in der Kundgebung werden nur nach Rücksprache mit Pf getroffen.&quot;,&quot;SMH&quot;:&quot;Was soll ich hier schreiben...&quot;},{&quot;ENr&quot;:55,&quot;UANr&quot;:[],&quot;darüber&quot;:11,&quot;EBezeichnung&quot;:&quot;EA Objektschutz / Ekdo&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am 07.09.2023 - Zwangsräumung von Reinhard verhindern! -&quot;,&quot;EFührer&quot;:&quot;PK Lustig&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;&quot;,&quot;EFRufname&quot;:&quot;Senta 870&quot;,&quot;EDigi&quot;:&quot;A 48/1&quot;,&quot;LFüGr&quot;:&quot;&quot;,&quot;FüGrRufname&quot;:&quot;&quot;,&quot;FüGrTelefon&quot;:&quot;&quot;,&quot;FüGrKräfte&quot;:&quot;&quot;,&quot;Kräfte&quot;:&quot;-/3 A 48&quot;,&quot;MZMO&quot;:&quot;17:00 Uhr - A 45&quot;,&quot;EZEO&quot;:&quot;17:30 Uhr  - Einsatzraum&quot;,&quot;FEM&quot;:&quot;VP-Variable \n eigene \n ausreichend Funktgeräte&quot;,&quot;Einzelaufträge&quot;:&quot;- Verhindern, dass unberechtigte/ Versammlungsteilnehmende das Grundstück Manteuffelstr. 5/Moltkestr. 16a betreten oder darauf einwirken, \n- Freihalten der Grundstückzugänge, \n- Kontakt aufnehmen und halten mit Architekturbüro, ggf. auch Anwohnern soweit anwesend., \n- auf Weisung: Unterstützung EA Kundgebung&quot;,&quot;SMH&quot;:&quot;Was soll ich hier schreiben...&quot;},{&quot;ENr&quot;:66,&quot;UANr&quot;:[],&quot;darüber&quot;:33,&quot;EBezeichnung&quot;:&quot;EA Objektschutz / Ekdo&quot;,&quot;EAnlass&quot;:&quot;angemeldete Kundgebung am 07.09.2023 - Zwangsräumung von Reinhard verhindern! -&quot;,&quot;EFührer&quot;:&quot;PK Lustig&quot;,&quot;EDst&quot;:&quot;A 49/4&quot;,&quot;EFTelefon&quot;:&quot;&quot;,&quot;EFRufname&quot;:&quot;Senta 870&quot;,&quot;EDigi&quot;:&quot;A 48/1&quot;,&quot;LFüGr&quot;:&quot;&quot;,&quot;FüGrRufname&quot;:&quot;&quot;,&quot;FüGrTelefon&quot;:&quot;&quot;,&quot;FüGrKräfte&quot;:&quot;&quot;,&quot;Kräfte&quot;:&quot;-/3 A 48&quot;,&quot;MZMO&quot;:&quot;17:00 Uhr - A 45&quot;,&quot;EZEO&quot;:&quot;17:30 Uhr  - Einsatzraum&quot;,&quot;FEM&quot;:&quot;VP-Variable \n eigene \n ausreichend Funktgeräte&quot;,&quot;Einzelaufträge&quot;:&quot;- Verhindern, dass unberechtigte/ Versammlungsteilnehmende das Grundstück Manteuffelstr. 5/Moltkestr. 16a betreten oder darauf einwirken, \n- Freihalten der Grundstückzugänge, \n- Kontakt aufnehmen und halten mit Architekturbüro, ggf. auch Anwohnern soweit anwesend., \n- auf Weisung: Unterstützung EA Kundgebung&quot;,&quot;SMH&quot;:&quot;Was soll ich hier schreiben...&quot;}]">
-
-
-<!---- Grafischer Befehl ---->
-	<div id="Seite" style="visibility: hidden;">
-		<table width="100%">
-			<tbody>
-				<tr>
-					<td id="Dienststelle">A 49/4</td>
-					<td id="Überschrift">
-						Grafischer Befehl - VS-nfD - <span id="EDatum">01.01.2024</span> - <span id="EinsatzID">11</span>
-					</td>
-					<td id="Stand">25-01-08 - 15-35-02</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div id="kopf">
-
-			<div class="kopfteil" id="Anlass"><b>Anlass</b><br>
-				<pre>angemeldete Kundgebung am 07.09.2023 - "Zwangsräumung von Reinhard verhindern!"</pre>
-			</div>
-
-			<div class="kopfteil" id="Polizeiführer"><b>Polizeiführer/in</b><br>EPHK Super, A 49/4<br>Senta 919<br>0170
-				55 10 566</div>
-
-			<div class="kopfteil" id="Führungsgruppe">
-				<b>Führungsgruppe</b><br>
-				<table style="width: 100%">
-					<tbody>
-						<tr>
-							<td id="FüGr1" style="width: 50%" valign="TOP">PHKin Witzig, A 49/41<br>Senta 919<br>0173
-								2058776<br>
-								<pre>-/1 A 49</pre>
-							</td>
-							<td id="FüGr2" style="width: 50%" valign="TOP">MZO:<br> 15:00 - A 49<br>EZO:<br> 17:00 -
-								Einsatzraum</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-
-		<div id="Digigruppe">
-			<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button><button class="plus" id="BAO_gesamt"
-				onclick="BAO_öffnen();">BAO</button><button class="plus" id="addPlus"
-				onclick="EAplus(DsNr);">+</button><svg id="LinienGB">
-				<line x1="174.9453125" y1="204" x2="174.9453125" y2="174" stroke="black"></line>
-				<line x1="502.1953125" y1="204" x2="502.1953125" y2="174" stroke="black"></line>
-				<line x1="835.25" y1="204" x2="835.25" y2="174" stroke="black"></line>
-				<line x1="174.9453125" y1="174" x2="835.25" y2="174" stroke="black"></line>
-			</svg> <svg height="46" style="background-color: white; margin-left: 427px;" width="140px">
-				<path d="M20,5 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: white"></path> <text
-					class="digi" style="font-weight: bold;" x="38" y="20">Digigruppe</text>
-			</svg>
-			<p class="digi" id="DGruppe">A 49/1</p>
-		</div>
-
-		<div id="Einsatzabschnitte">
-			<div class="EAZeile">
-				<div class="EAFÜGr" id="Einsatzabschnitt22">
-					<p style="text-align: center"><b>(22) EA Voraufsicht/Raumschutz</b></p>
-					<hr>
-					<p>Führer: A 49/9</p>
-					<hr>
-					<p>Telefon: / </p>
-					<hr>
-					<p>Rufname: S921 / </p>
-					<hr>
-					<p>Kräfte: </p>
-					<pre>-/2 A 49/9</pre>
-					<p></p>
-					<hr>
-					<p>MZO: </p>
-					<hr>
-					<p>EZO: 15:00 - Einsatzraum</p>
+			
+	</head>
+	
+	<body ea-data="[{&quot;ENr&quot;:1,&quot;UANr&quot;:[2,3,4],&quot;darüber&quot;:&quot;&quot;,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:2,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:3,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:4,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;}]">
+		
+		<!---- Grafischer Befehl ---->
+		<div id="Seite" style="visibility: hidden;">
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td id="Dienststelle">
+							A 49/4</td>
+						<td id="Überschrift">
+							Grafischer Befehl - VS-nfD - <span id="EDatum">01.01.2024</span> - <span id="EinsatzID">11</span></td>
+						<td id="Stand">25-01-09 - 11-20-59</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="kopf">
+				<div class="kopfteil" id="Anlass">
+					<b>Anlass</b><br>
+					<pre>angemeldete Kundgebung am 07.09.2023 - "Zwangsräumung von Reinhard verhindern!"</pre>
 				</div>
-				<div class="EAEinzelA"><b>Einzelaufträge:</b><br>
-					<pre>- Freihalten des angeordneten Halteverbotes, 
+				<div class="kopfteil" id="Polizeiführer">
+					<b>Polizeiführer/in</b><br>
+					EPHK Super, A 49/4<br>
+					Senta 919<br>
+					0170 55 10 566</div>
+				<div class="kopfteil" id="Führungsgruppe">
+					<b>Führungsgruppe</b><br>
+					<table style="width: 100%">
+						<tbody>
+							<tr>
+								<td id="FüGr1" style="width: 50%" valign="TOP">
+									PHKin Witzig, A 49/41<br>
+									Senta 919<br>
+									0173 2058776<br>
+									<pre>-/1 A 49</pre>
+								</td>
+								<td id="FüGr2" style="width: 50%" valign="TOP">
+									MZO:<br>
+									 15:00 - A 49<br>
+									EZO:<br>
+									 17:00 - Einsatzraum</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div id="Digigruppe">
+				<!--<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button>
+				<button class="plus" id="BAO_gesamt" onclick="BAO_öffnen();">BAO</button>
+				<button class="plus" id="addPlus" onclick="EAplus(DsNr);">+</button> -->
+				<svg id="LinienGB"> 
+					<line stroke="black" x1="174.9453125" x2="174.9453125" y1="204" y2="174"></line> 
+					<line stroke="black" x1="502.1953125" x2="502.1953125" y1="204" y2="174"></line>
+					<line stroke="black" x1="835.25" x2="835.25" y1="204" y2="174"></line> 
+					<line stroke="black" x1="174.9453125" x2="835.25" y1="174" y2="174"></line> 
+				</svg>
+				<svg height="46" style="background-color: white; margin-left: 427px;" width="140px"> 
+					<path d="M20,5 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: white"></path> 
+					<text class="digi" style="font-weight: bold;" x="38" y="20">Digigruppe</text> 
+				</svg>
+				<p class="digi" id="DGruppe">A 49/1</p>
+			</div>
+			
+			<div id="Einsatzabschnitte">
+				<div class="EAZeile">
+					<div class="EAFÜGr" id="Einsatzabschnitt22">
+						<p style="text-align: center">
+							<b>(22) EA Voraufsicht/Raumschutz</b></p>
+						<hr>
+						<p>
+							Führer: A 49/9</p>
+						<hr>
+						<p>
+							Telefon: /</p>
+						<hr>
+						<p>
+							Rufname: S921 /</p>
+						<hr>
+						<p>
+							Kräfte:</p>
+						<pre>-/2 A 49/9</pre>
+						<p>
+							&nbsp;</p>
+						<hr>
+						<p>
+							MZO:</p>
+						<hr>
+						<p>
+							EZO: 15:00 - Einsatzraum</p>
+					</div>
+					<div class="EAEinzelA">
+						<b>Einzelaufträge:</b><br>
+						<pre>- Freihalten des angeordneten Halteverbotes, 
  - ggf. Veranlassung von Umsetzungen, 
  - Offene und verdeckte Aufklärung im Nahbereich des Kundgebungsortes: Meldung von relevanten Auffälligkeiten mit Bezug zur Kundgebung, 
 - Raumschutz auf den Wegen zum Kundgebungsort mit Fokus auf den ÖPNV (Bushaltestellen, S-Bhf Botanischer Garten und S-Bhf Steglitz), 
 - Begleiten von relevanten Personengruppen, 
 - Kontrolle der ASG Depots (Zugänglich? Fahrräder angeschlossen?), 
 - auf Weisung: Unterstützung EA Kundgebung</pre>
-					<p></p>
-				</div>
-				<p class="EADigi"><svg style="margin-bottom: -26px" width="140px" height="55"><text class="digi" x="38"
-							y="25" style="font-weight: bold;">Digigruppe</text>
-						<path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path>
-					</svg><br><span>A 49/1</span></p>
-				<div class="EAFÜGr" id="Einsatzabschnitt33">
-					<p style="text-align: center"><b>(33) EA Verkehrsmaßnahmen</b></p>
-					<hr>
-					<p>Führer: PHK Mustermann</p>
-					<hr>
-					<p>Telefon: / </p>
-					<hr>
-					<p>Rufname: Senta 670 / </p>
-					<hr>
-					<p>Kräfte: </p>
-					<pre>-/3 A 46</pre>
-					<p></p>
-					<hr>
-					<p>MZO: 17:00 Uhr - A 49</p>
-					<hr>
-					<p>EZO: 17:30 Uhr - Einsatzraum</p>
-				</div>
-				<div class="EAEinzelA"><b>Einzelaufträge:</b><br>
-					<pre>Vorbereitung und auf Weisung Errichtung von Verkehrssperren mit Ziel der Herstellung eines verkehrsfeien Raumes 
+						<p>
+							&nbsp;</p>
+					</div>
+					<p class="EADigi">
+						<svg height="55" style="margin-bottom: -26px" width="140px"><text class="digi" style="font-weight: bold;" x="38" y="25">Digigruppe</text> <path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path> </svg><br>
+						<span>A 49/1</span></p>
+					<div class="EAFÜGr" id="Einsatzabschnitt33">
+						<p style="text-align: center">
+							<b>(33) EA Verkehrsmaßnahmen</b></p>
+						<hr>
+						<p>
+							Führer: PHK Mustermann</p>
+						<hr>
+						<p>
+							Telefon: /</p>
+						<hr>
+						<p>
+							Rufname: Senta 670 /</p>
+						<hr>
+						<p>
+							Kräfte:</p>
+						<pre>-/3 A 46</pre>
+						<p>
+							&nbsp;</p>
+						<hr>
+						<p>
+							MZO: 17:00 Uhr - A 49</p>
+						<hr>
+						<p>
+							EZO: 17:30 Uhr - Einsatzraum</p>
+					</div>
+					<div class="EAEinzelA">
+						<b>Einzelaufträge:</b><br>
+						<pre>Vorbereitung und auf Weisung Errichtung von Verkehrssperren mit Ziel der Herstellung eines verkehrsfeien Raumes 
 - Manteuffelstr. zwischen Moltkestr. und Augustaplatz (mit Nachsperren am Kundgebungsort), gesamten Kreuzungsbereich Manteuffelstr./Moltkestr. (mit Nachsperren am Kundgebungsort) 
 - Solange der Straßenverkehr läuft: Sicherung der ASG-Line für den Fahrzeugverkehr</pre>
-					<p></p>
-				</div>
-				<p class="EADigi"><svg style="margin-bottom: -26px" width="140px" height="55"><text class="digi" x="38"
-							y="25" style="font-weight: bold;">Digigruppe</text>
-						<path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path>
-					</svg><br><span>A 46/1</span></p>
-				<div class="EAFÜGr" id="Einsatzabschnitt55">
-					<p style="text-align: center"><b>(55) EA Objektschutz / Ekdo</b></p>
-					<hr>
-					<p>Führer: PK Lustig</p>
-					<hr>
-					<p>Telefon: / </p>
-					<hr>
-					<p>Rufname: Senta 870 / </p>
-					<hr>
-					<p>Kräfte: </p>
-					<pre>-/3 A 48</pre>
-					<p></p>
-					<hr>
-					<p>MZO: 17:00 Uhr - A 45</p>
-					<hr>
-					<p>EZO: 17:30 Uhr - Einsatzraum</p>
-				</div>
-				<div class="EAEinzelA"><b>Einzelaufträge:</b><br>
-					<pre>- Verhindern, dass unberechtigte/ Versammlungsteilnehmende das Grundstück Manteuffelstr. 5/Moltkestr. 16a betreten oder darauf einwirken, 
+						<p>
+							&nbsp;</p>
+					</div>
+					<p class="EADigi">
+						<svg height="55" style="margin-bottom: -26px" width="140px"><text class="digi" style="font-weight: bold;" x="38" y="25">Digigruppe</text> <path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path> </svg><br>
+						<span>A 46/1</span></p>
+					<div class="EAFÜGr" id="Einsatzabschnitt55">
+						<p style="text-align: center">
+							<b>(55) EA Objektschutz / Ekdo</b></p>
+						<hr>
+						<p>
+							Führer: PK Lustig</p>
+						<hr>
+						<p>
+							Telefon: /</p>
+						<hr>
+						<p>
+							Rufname: Senta 870 /</p>
+						<hr>
+						<p>
+							Kräfte:</p>
+						<pre>-/3 A 48</pre>
+						<p>
+							&nbsp;</p>
+						<hr>
+						<p>
+							MZO: 17:00 Uhr - A 45</p>
+						<hr>
+						<p>
+							EZO: 17:30 Uhr - Einsatzraum</p>
+					</div>
+					<div class="EAEinzelA">
+						<b>Einzelaufträge:</b><br>
+						<pre>- Verhindern, dass unberechtigte/ Versammlungsteilnehmende das Grundstück Manteuffelstr. 5/Moltkestr. 16a betreten oder darauf einwirken, 
 - Freihalten der Grundstückzugänge, 
 - Kontakt aufnehmen und halten mit Architekturbüro, ggf. auch Anwohnern soweit anwesend., 
 - auf Weisung: Unterstützung EA Kundgebung</pre>
-					<p></p>
+						<p>
+							&nbsp;</p>
+					</div>
+					<p class="EADigi">
+						<svg height="55" style="margin-bottom: -26px" width="140px"><text class="digi" style="font-weight: bold;" x="38" y="25">Digigruppe</text> <path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path> </svg><br>
+						<span>A 48/1</span></p>
 				</div>
-				<p class="EADigi"><svg style="margin-bottom: -26px" width="140px" height="55"><text class="digi" x="38"
-							y="25" style="font-weight: bold;">Digigruppe</text>
-						<path d="M20,10 h100 l20,20 l-20,20 h-100 l-20,-20 Z" stroke="black" style="fill: none"></path>
-					</svg><br><span>A 48/1</span></p>
+				<div class="contextMenu" id="contextMenu22" style="display: none;">
+					<p class="KMEintrag" id="KMbearbeiten22">
+						EA bearbeiten</p>
+					<p>
+						<span class="KMEintrag" id="KMnachLinks22">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts22">▶</span></p>
+					<p class="KMEintrag" id="KMUAöffnen22">
+						Grafischer Befehl</p>
+					<p class="KMEintrag" id="KMentlassen22">
+						EA entlassen</p>
+					<p class="KMEintrag" id="KMlöschen22">
+						EA löschen</p>
+				</div>
+				<div class="contextMenu" id="contextMenu33" style="display: none;">
+					<p class="KMEintrag" id="KMbearbeiten33">
+						EA bearbeiten</p>
+					<p>
+						<span class="KMEintrag" id="KMnachLinks33">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts33">▶</span></p>
+					<p class="KMEintrag" id="KMUAöffnen33">
+						Grafischer Befehl</p>
+					<p class="KMEintrag" id="KMentlassen33">
+						EA entlassen</p>
+					<p class="KMEintrag" id="KMlöschen33">
+						EA löschen</p>
+				</div>
+				<div class="contextMenu" id="contextMenu55" style="display: none;">
+					<p class="KMEintrag" id="KMbearbeiten55">
+						EA bearbeiten</p>
+					<p>
+						<span class="KMEintrag" id="KMnachLinks55">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts55">▶</span></p>
+					<p class="KMEintrag" id="KMUAöffnen55">
+						Grafischer Befehl</p>
+					<p class="KMEintrag" id="KMentlassen55">
+						EA entlassen</p>
+					<p class="KMEintrag" id="KMlöschen55">
+						EA löschen</p>
+				</div>
 			</div>
-			<div id="contextMenu22" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten22">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks22">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts22">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen22">Grafischer Befehl</p>
-				<p class="KMEintrag" id="KMentlassen22">EA entlassen</p>
-				<p class="KMEintrag" id="KMlöschen22">EA löschen</p>
-			</div>
-			<div id="contextMenu33" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten33">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks33">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts33">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen33">Grafischer Befehl</p>
-				<p class="KMEintrag" id="KMentlassen33">EA entlassen</p>
-				<p class="KMEintrag" id="KMlöschen33">EA löschen</p>
-			</div>
-			<div id="contextMenu55" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten55">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks55">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts55">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen55">Grafischer Befehl</p>
-				<p class="KMEintrag" id="KMentlassen55">EA entlassen</p>
-				<p class="KMEintrag" id="KMlöschen55">EA löschen</p>
+			<hr class="nichtdrucken" style="margin-top: 15px">
+			<p style="margin: 5px; font-size: 20px; text-align: left;">
+				<b>Sonstigen Maßnahnen und Hinweise</b></p>
+			<div id="SMH">
+				<pre>Hallo</pre>
 			</div>
 		</div>
-
-		<hr class="nichtdrucken" style="margin-top: 15px">
-
-		<p style="margin: 5px; font-size: 20px; text-align: left;">
-			<b>Sonstigen Maßnahnen und Hinweise</b>
-		</p>
-
-		<div id="SMH">
-			<pre>Hallo</pre>
-		</div>
-
-	</div>
-
-	<!---- Formular ---->
-	<div id="Formular" style="visibility: hidden;">
-		<form name="EAEingabe">
-			<table>
-				<tbody>
-					<tr valign="top">
-						<td style="padding: 10px; width: 350px;">
-							<table>
-								<tbody>
-									<tr id="SpalteEBezeichnung">
-										<td class="Spalte1">
-											<label for="EBezeichnung">Bezeichnung</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EBezeichnung" name="EBezeichnung">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EDatum">Einsatzdatum</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EiDatum" name="EDatum">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EFührer">Führer/in</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EFührer" name="EFührer">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EDst">Dienststelle</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EDst" name="EDst">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EFRufname">Rufname</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EFRufname" name="EFRufname">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EFTelefon">Telefon</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EFTelefon" name="EFTelefon">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="LFüGr">LFüGr</label>
-										</td>
-										<td class="Spalte2">
-											<input id="LFüGr" name="LFüGr">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="FüGrRufname">FüGr-Rufname</label>
-										</td>
-										<td class="Spalte2">
-											<input id="FüGrRufname" name="FüGrRufname">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="FüGrTelefon">FüGr-Telefon</label>
-										</td>
-										<td class="Spalte2">
-											<input id="FüGrTelefon" name="FüGrTelefon">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="FüGrKräfte">FüGr-Kräfte</label>
-										</td>
-										<td class="Spalte2">
-											<input id="FeldFüGrKräfte" name="FeldFüGrKräfte">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="Kräfte">Kräfte</label>
-										</td>
-										<td class="Spalte2">
-											<input id="FeldKräfte" name="FeldKräfte">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="MZMO">MZO</label>
-										</td>
-										<td class="Spalte2">
-											<input id="MZMO" name="MZMOA">
-										</td>
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EZEO">EZO</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EZEO" name="EZEO">
-										</td>
-									</tr>
-									<tr>
-										<!--	<td class="Spalte1">
+		
+		<!---- Formular ---->
+		<div id="Formular" style="visibility: hidden;">
+			<form name="EAEingabe">
+				<table>
+					<tbody>
+						<tr valign="top">
+							<td style="padding: 10px; width: 350px;">
+								<table>
+									<tbody>
+										<tr id="SpalteEBezeichnung">
+											<td class="Spalte1">
+												<label for="EBezeichnung">Bezeichnung</label></td>
+											<td class="Spalte2">
+												<input id="EBezeichnung" name="EBezeichnung"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EDatum">Einsatzdatum</label></td>
+											<td class="Spalte2">
+												<input id="EiDatum" name="EDatum"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EFührer">Führer/in</label></td>
+											<td class="Spalte2">
+												<input id="EFührer" name="EFührer"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EDst">Dienststelle</label></td>
+											<td class="Spalte2">
+												<input id="EDst" name="EDst"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EFRufname">Rufname</label></td>
+											<td class="Spalte2">
+												<input id="EFRufname" name="EFRufname"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EFTelefon">Telefon</label></td>
+											<td class="Spalte2">
+												<input id="EFTelefon" name="EFTelefon"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="LFüGr">LFüGr</label></td>
+											<td class="Spalte2">
+												<input id="LFüGr" name="LFüGr"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="FüGrRufname">FüGr-Rufname</label></td>
+											<td class="Spalte2">
+												<input id="FüGrRufname" name="FüGrRufname"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="FüGrTelefon">FüGr-Telefon</label></td>
+											<td class="Spalte2">
+												<input id="FüGrTelefon" name="FüGrTelefon"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="FüGrKräfte">FüGr-Kräfte</label></td>
+											<td class="Spalte2">
+												<input id="FeldFüGrKräfte" name="FeldFüGrKräfte"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="Kräfte">Kräfte</label></td>
+											<td class="Spalte2">
+												<input id="FeldKräfte" name="FeldKräfte"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="MZMO">MZO</label></td>
+											<td class="Spalte2">
+												<input id="MZMO" name="MZMOA"></td>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EZEO">EZO</label></td>
+											<td class="Spalte2">
+												<input id="EZEO" name="EZEO"></td>
+										</tr>
+										<tr>
+											<!--	<td class="Spalte1">
 												<label for="FEM">FEM</label></td>
 											<td class="Spalte2">
 												<input id="FeldFEM" name="FeldFEM" /></td> -->
-									</tr>
-									<tr>
-										<td class="Spalte1">
-											<label for="EDigi">Digi</label>
-										</td>
-										<td class="Spalte2">
-											<input id="EDigi" name="EDigi">
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
-
-						<td id="SpalteEinzelaufträge" style="padding: 10px; width: 300px;" valign="top">
-
-							<label for="EAnlass">Anlass</label>
-							<br>
-
-							<span id="FeldEAnlass" name="FeldEAnlass"></span>
-							<br>
-							<br>
-
-							<label for="Einzelaufträge">Einzelaufträge</label>
-							<br>
-
-							<span id="FeldEinzelaufträge" name="FeldEinzelaufträge"></span>
-
-						</td>
-
-						<td id="SpalteSMH" style="padding: 10px; width: 200px;" valign="top">
-							<label for="UASMH">sonstige Maßnahmen und Hinweise</label>
-							<br>
-							<span id="FeldUASMH" name="FeldUASMH"></span>
-
-						</td>
-					</tr>
-				</tbody>
+										</tr>
+										<tr>
+											<td class="Spalte1">
+												<label for="EDigi">Digi</label></td>
+											<td class="Spalte2">
+												<input id="EDigi" name="EDigi"></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td id="SpalteEinzelaufträge" style="padding: 10px; width: 300px;" valign="top">
+								<label for="EAnlass">Anlass</label><br>
+								<br>
+								<br>
+								<label for="Einzelaufträge">Einzelaufträge</label></td>
+							<td id="SpalteSMH" style="padding: 10px; width: 200px;" valign="top">
+								<label for="UASMH">sonstige Maßnahmen und Hinweise</label></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<button class="plus" id="übertragen" onclick="ESpeichern();" style="width: 200px;">Übertragen</button><button class="plus" id="schließen" onclick="Schließen();" style="width: 200px;">ohne Speichern schließen</button><br>
+			<!--Kontrollfelder-->
+			<p style="font-family: Courier New; font-size: 10px; ">
+				EANr:<span id="KonEANr"> </span>- UANr: <span id="KonUANr"> </span> - oE:</p>
+		</div>
+		
+		<!---- Import ---->
+		<div id="Import" style="visibility: hidden;">
+			<h1>BAO importieren</h1>
+			<p>
+				<input id="fileInput" type="file"><button class="plus" onclick="importJSON()" style="width: 200px;">Laden</button><button class="plus" id="hoch" onclick="document.getElementById('Import').style.visibility = 'hidden';" style="width: 200px;">Schließen</button></p>
+		</div>
+		
+		<!---- BAO ---->
+		<div id="BAOFenster" style="visibility: visible;">
+			<div id="Linie">
+				<svg id="Linien" style="width: 100%; height: 100%;"><path d="M 144.4921875,185v 20 " stroke="black"></path><line x1="58.1640625" y1="205" x2="230.8203125" y2="205" stroke="black"></line><path d="M 58.1640625,225v -20 " stroke="black"></path><path d="M 144.4921875,225v -20 " stroke="black"></path><path d="M 230.8203125,225v -20 " stroke="black"></path></svg></div>
+			
+			<div class="plus" id="Papierkorb" style="display: none;">
+				🗑</div>
+			<div class="plus" id="Schere" style="display: none;">
+				✂</div>
+			<h1 style="text-align: center; margin: 0; margin-left: 200px;">
+				BAO</h1>
+			<div id="BAOGrafik"><div class="Block"><div id="Block1" class="Kasten"><p id="EABÜ1" class="EABlockÜberschrift">n.n.</p><p class="EABlockInhalt">ENr: 1</p><p class="EABlockInhalt">EDatum: n.n.</p><p class="EABlockInhalt">UANr: 2,3,4</p><p class="EABlockInhalt">EDst: n.n.</p><p class="EABlockInhalt">EFührer: n.n.</p><p class="EABlockInhalt">Kräfte: n.n.<br></p></div><div class="Block"><div id="Block2" class="Kasten"><p id="EABÜ2" class="EABlockÜberschrift">n.n.</p><p class="EABlockInhalt">ENr: 2</p><p class="EABlockInhalt">EDatum: n.n.</p><p class="EABlockInhalt">UANr: </p><p class="EABlockInhalt">EDst: n.n.</p><p class="EABlockInhalt">EFührer: n.n.</p><p class="EABlockInhalt">Kräfte: n.n.<br></p></div></div><div class="Block"><div id="Block3" class="Kasten"><p id="EABÜ3" class="EABlockÜberschrift">n.n.</p><p class="EABlockInhalt">ENr: 3</p><p class="EABlockInhalt">EDatum: n.n.</p><p class="EABlockInhalt">UANr: </p><p class="EABlockInhalt">EDst: n.n.</p><p class="EABlockInhalt">EFührer: n.n.</p><p class="EABlockInhalt">Kräfte: n.n.<br></p></div></div><div class="Block"><div id="Block4" class="Kasten"><p id="EABÜ4" class="EABlockÜberschrift">n.n.</p><p class="EABlockInhalt">ENr: 4</p><p class="EABlockInhalt">EDatum: n.n.</p><p class="EABlockInhalt">UANr: </p><p class="EABlockInhalt">EDst: n.n.</p><p class="EABlockInhalt">EFührer: n.n.</p><p class="EABlockInhalt">Kräfte: n.n.<br></p></div></div></div></div>
+			<div id="BAOKontext"><div id="contextMenuBAO1" class="contextMenu" style="display: none;"><p class="KMEintrag" id="KMbearbeiten1">EA bearbeiten</p><p><span class="KMEintrag" id="KMnachLinks1">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts1">▶</span></p><p class="KMEintrag" id="KMUAöffnen1">Grafischer Befehl</p></div><div id="contextMenuBAO2" class="contextMenu" style="display: none;"><p class="KMEintrag" id="KMbearbeiten2">EA bearbeiten</p><p><span class="KMEintrag" id="KMnachLinks2">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts2">▶</span></p><p class="KMEintrag" id="KMUAöffnen2">Grafischer Befehl</p></div><div id="contextMenuBAO3" class="contextMenu" style="display: none;"><p class="KMEintrag" id="KMbearbeiten3">EA bearbeiten</p><p><span class="KMEintrag" id="KMnachLinks3">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts3">▶</span></p><p class="KMEintrag" id="KMUAöffnen3">Grafischer Befehl</p></div><div id="contextMenuBAO4" class="contextMenu" style="display: none;"><p class="KMEintrag" id="KMbearbeiten4">EA bearbeiten</p><p><span class="KMEintrag" id="KMnachLinks4">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="KMEintrag" id="KMnachRechts4">▶</span></p><p class="KMEintrag" id="KMUAöffnen4">Grafischer Befehl</p></div></div>
+		</div>
+		
+		<!---- Toolbox ---->
+		<div id="Toolbox" style="visibility: visible;">
+			<p style="padding-left: 5px;"><b>Toolbox</b></p>
+			
+			<button class="plus" id="NEU" onclick="neu();">NEU</button>
+			<button class="plus" id="Speichern" onclick="speichernhtml();">💾</button>
+			<button class="plus" id="Exp" onclick="exportjson();">Exp.</button>
+			<button class="plus" id="Imp" onclick="Import();">Imp.</button>
+			<button class="plus" id="BAO_gesamt" onclick="BAO_öffnen();">BAO</button>
+			<button class="plus" id="GB" onclick="">GB</button>		
+			<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button>
+			<button class="plus" id="addPlus" onclick="EAplus(DsNr);">+</button>
+			<button class="plus" id="BAOplus" onclick="BAOplus();">+</button>
+			<button class="plus" id="Übersicht" onclick="">Ü</button>
+			<button class="plus" id="InfoBoxButton" onclick="InfoBox_öffnen();">i</button>
+			<p>
+		</div>
+		
+		<!---- Infobox ---->
+		<div id="InfoBox">
+			<table>
+				<tr>
+					<td><button class="plus" id="InfoBoxSchließenButton" onclick="InfoBox_schließen();">X</button></td>
+					<td><h1>Infobox</h1></td>
+				</tr>
 			</table>
-		</form>
-
-		<button class="plus" id="übertragen" onclick="ESpeichern();" style="width: 200px;">Übertragen</button>
-		<button class="plus" id="schließen" onclick="Schließen();" style="width: 200px;">ohne Speichern
-			schließen</button><br>
-
-		<!--Kontrollfelder-->
-		<p style="font-family: Courier New; font-size: 10px; ">
-			EANr:<span id="KonEANr"> </span>- UANr: <span id="KonUANr"> </span> - oE: <span id="KonDarüber"></span>
-		</p>
-
-	</div>
-
-	<!---- Import ---->
-	<div id="Import" style="visibility: hidden;">
-		<h1>BAO importieren</h1>
-		<p>
-			<input id="fileInput" type="file">
-			<button class="plus" onclick="importJSON()" style="width: 200px;">Laden</button>
-			<button class="plus" id="hoch" onclick="document.getElementById('Import').style.visibility = 'hidden';"
-				style="width: 200px;">Schließen</button>
-		</p>
-	</div>
-
-	<!---- BAO ---->
-	<div id="BAOFenster" style="visibility: visible;">
-		<div id="Linie">
-			<svg id="Linien" style="width: 100%; height: 100%;">
-				<path d="M 368.9375,179v 20 " stroke="black"></path>
-				<line x1="118.9609375" y1="199" x2="633.5625" y2="199" stroke="black"></line>
-				<path d="M 118.9609375,219v -20 " stroke="black"></path>
-				<path d="M 383.5859375,219v -20 " stroke="black"></path>
-				<path d="M 383.5859375,331v 20 " stroke="black"></path>
-				<line x1="294.2734375" y1="351" x2="449.9375" y2="351" stroke="black"></line>
-				<path d="M 294.2734375,371v -20 " stroke="black"></path>
-				<path d="M 633.5625,219v -20 " stroke="black"></path>
-				<path d="M 449.9375,371v -20 " stroke="black"></path>
-			</svg>
-		</div>
-		<button class="plus" id="NEU" onclick="neu();">NEU</button><button class="plus" id="Speichern"
-			onclick="speichernhtml();">💾</button><button class="plus" id="Exp"
-			onclick="exportjson();">Exp.</button><button class="plus" id="Imp" onclick="Import();">Imp.</button><button
-			class="plus" id="BAOplus" onclick="BAOplus();">+</button><button class="plus" id="Übersicht"
-			onclick="">BAO</button>
-		<div class="plus" id="Papierkorb" style="display: none;">🗑</div>
-		<div class="plus" id="Schere" style="display: none;">✂</div>
-		<h1 style="text-align: center; margin: 0; margin-left: 200px;">BAO-Stand 08.01.2025</h1>
-		<div id="BAOGrafik">
-			<div class="Block">
-				<div id="Block11" class="Kasten">
-					<p id="EABÜ11" class="EABlockÜberschrift">Einsatzleitung</p>
-					<p class="EABlockInhalt">ENr: 11</p>
-					<p class="EABlockInhalt">EDatum: 01.01.2024</p>
-					<p class="EABlockInhalt">UANr: 22,33,55</p>
-					<p class="EABlockInhalt">EDst: A 49/4</p>
-					<p class="EABlockInhalt">EFührer: EPHK Super, A 49/4</p>
-					<p class="EABlockInhalt">Kräfte: <br></p>
-				</div>
-				<div class="Block">
-					<div id="Block22" class="Kasten">
-						<p id="EABÜ22" class="EABlockÜberschrift">EA Voraufsicht/Raumschutz</p>
-						<p class="EABlockInhalt">ENr: 22</p>
-						<p class="EABlockInhalt">EDatum: undefined</p>
-						<p class="EABlockInhalt">UANr: </p>
-						<p class="EABlockInhalt">EDst: A 49/4</p>
-						<p class="EABlockInhalt">EFührer: A 49/9</p>
-						<p class="EABlockInhalt">Kräfte: -/2 A 49/9<br></p>
-					</div>
-				</div>
-				<div class="Block">
-					<div id="Block33" class="Kasten">
-						<p id="EABÜ33" class="EABlockÜberschrift">EA Verkehrsmaßnahmen</p>
-						<p class="EABlockInhalt">ENr: 33</p>
-						<p class="EABlockInhalt">EDatum: undefined</p>
-						<p class="EABlockInhalt">UANr: 44,66</p>
-						<p class="EABlockInhalt">EDst: A 49/4</p>
-						<p class="EABlockInhalt">EFührer: PHK Mustermann</p>
-						<p class="EABlockInhalt">Kräfte: -/3 A 46<br></p>
-					</div>
-					<div class="Block">
-						<div id="Block44" class="Kasten">
-							<p id="EABÜ44" class="EABlockÜberschrift">EA Kundgebung</p>
-							<p class="EABlockInhalt">ENr: 44</p>
-							<p class="EABlockInhalt">EDatum: undefined</p>
-							<p class="EABlockInhalt">UANr: </p>
-							<p class="EABlockInhalt">EDst: A 49/4</p>
-							<p class="EABlockInhalt">EFührer: POKin Max</p>
-							<p class="EABlockInhalt">Kräfte: -/3 A 47<br></p>
-						</div>
-					</div>
-					<div class="Block">
-						<div id="Block66" class="Kasten">
-							<p id="EABÜ66" class="EABlockÜberschrift">EA Objektschutz / Ekdo</p>
-							<p class="EABlockInhalt">ENr: 66</p>
-							<p class="EABlockInhalt">EDatum: undefined</p>
-							<p class="EABlockInhalt">UANr: </p>
-							<p class="EABlockInhalt">EDst: A 49/4</p>
-							<p class="EABlockInhalt">EFührer: PK Lustig</p>
-							<p class="EABlockInhalt">Kräfte: -/3 A 48<br></p>
-						</div>
-					</div>
-				</div>
-				<div class="Block">
-					<div id="Block55" class="Kasten">
-						<p id="EABÜ55" class="EABlockÜberschrift">EA Objektschutz / Ekdo</p>
-						<p class="EABlockInhalt">ENr: 55</p>
-						<p class="EABlockInhalt">EDatum: undefined</p>
-						<p class="EABlockInhalt">UANr: </p>
-						<p class="EABlockInhalt">EDst: A 49/4</p>
-						<p class="EABlockInhalt">EFührer: PK Lustig</p>
-						<p class="EABlockInhalt">Kräfte: -/3 A 48<br></p>
-					</div>
-				</div>
-			</div>
+			
+			
+			<p>Sehr geehrte Kollegin,<br>
+				sehr geehrter Kollege,<br><br></p>
+			<p>
+				ich stelle Dir hier den <b>"BAO-Creator"</b> vor. Dabei handelt es sich um eine Möglichkeit, auf einfache Weise eine BAO und den dazugehörigen Grafischen Befehl in einer einzigen Datei zu erstellen, zu speichern und zu verschicken.</p>
+			<p>
+				Daraus ergeben sich vielfältige Möglichkeiten bei der Planung und Durchführung von Polizeieinsätzen. Die Möglichkeiten und die weitreichenden Vorteile zur Nutzung des BAO-Creators möchte ich euch hier stichpunktartig vorstellen:</p>
+			<ul>
+				<li>
+					Erstellung und Präsentation von polizeilichen BAO und grafischen Befehlen</li>
+				<li>
+					nur eine einzige Datei - kein klassisches Programm oder eine App</li>
+				<li>
+					PDV 100 konform</li>
+				<li>
+					einfache und selbsterklärende Bedienung</li>
+				<li>
+					Darstellung und Erstellung von große BAO mit mehreren Ebenen (EA/UA/UUA/UUUA etc.)</li>
+				<li>
+					Darstellung von mehreren BAO gleichzeitig nebeneinander</li>
+				<li>
+					Umgliederung im laufenden Einsatz per "Drag and Drop" bei automatischer Anpassung der Grafischen Befehle</li>
+				<li>
+					keine Formatierungen von Texten oder grafischen Elementen</li>
+				<li>
+					Dokumentation von laufenden Einsätzen bei Umstrukturierungen der BAO</li>
+				<li>
+					Dokumentation der erteilten Einzelaufträgen im laufenden Einsatz</li>
+				<li>
+					Einsatz- und Unterabschnitte können ihre BAO/Untergliederungen und grafische Befehle einfügen</li>
+				<li>
+					browserbasierend: Plattform- und Betriebssystemunabhängig</li>
+				<li>
+					von auswertige Einheiten und andere Bundesländer unkompliziert nutzbar</li>
+				<li>
+					keine Gefahr von Viren oder Malware</li>
+			</ul>
+			<p>
+				<b>technische Hinweise:</b></p>
+			<ul>
+				<li>
+					Bei dem Dateiformat handelt es sich um eine html-Datei. Internetseiten sind in diesem Format gespeichert. Damit ist sie Plattformunabhängig. Eine Installation ist nicht vorgesehen. Es wird lediglich ein Internetbrowser (Edge, Chrome, Firefox etc.) benötigt. Eine Internetverbindung ist nicht erforderlich. Sie kann auf jedem System mit einem Browser verwendet werden: PC, Tablet, Handy, TV-Geräte mit integrierter Browser-Software etc.</li>
+				<li>
+					Die Datei kann zentral abgelegt (Cloud, SharePoint/IntraPol, Netzwerklaufwerk) oder per Email verschickt oder auf einem USB-Speicherstick abgelegt und weitergegeben werden.</li>
+				<li>
+					Es wird kein gesonderte Software benötigt. Der Programmcode ist in JavaScript geschrieben und in der html- Datei selbst enthalten. Das Einbringen von Schadcode (Viren etc.) ist nicht möglich. Der Programm-Code ist für alle einsehbar, und Anpassungen in der Struktur oder dem Layout lassen sich bei entsprechendem Sachverstand und Programmkenntnissen selbst realisieren oder weiter entwickeln.</li>
+				<li>
+					Die Einsätze sind als einzelne Datensätze gespeichert und lassen sich in und aus anderen Anwendungen portieren, z.B. Excel, Word, PowerPoint) So können auch verschiedene BAO und Grafische Befehle zusammengeführt werden.</li>
+				<li>
+					Wenn die Datei an einen zentralen Ort gespeichert und zur Verfügung gestellt wird, habe Einsatzkräfte und EA/UA jederzeit die Möglichkeit, die aktuelle BAO und die aktuellen Einsatzaufträge für sich und benachbarte Kräfte einzusehen. Veränderungen und Anpassungen sind sofort sichtbar und sorgen für verbesserte Transparenz.</li>
+				<li>
+					Weiterentwicklungen/Update können einfach durch eine neue Datei ersetzt werden. Ein reguläres Update eines Programms ist nicht erforderlich.</li>
+			</ul>
+			<p>
+				<b>Besonderheit:</b></p>
+			<p>
+				Die Speicherung der Datei ist aus sicherheitsgrünen wegen der Architektur der Internetbrowser nicht ohne weiteres möglich. In der Regel muss für jede Speicherung eine neue Datei angelegt werden. Dies erfolgt allerdings automatisch als Download und ist nicht aufwendig.<br><br></p>
+			<p>
+				<b>Ausblick</b> - folgende mögliche Erweiterungen sind mit dem vorhanden Programm bei Erweiterung des Programmcodes möglich:</p>
+			<ul>
+				<li>
+					Einbindung in ein Datenbanksystem</li>
+				<li>
+					Einbindung in SharePoint (IntraPol)</li>
+				<li>
+					Kräfteverwaltung</li>
+				<li>
+					Einrichtung unterschiedlicher Benutzerrechter mit unterschiedlichen Ebenen</li>
+				<li>
+					Einbindung in EPSweb-Oberfläche oder eines seiner Folgeprojekte</li>
+			</ul>
+			<p>
+				Ich würde mich freuen, wenn Dir mein Tool gefällt und es Dir bei Deiner Arbeit ein Hilfe ist.<br><br></p>
+			<p>
+				Mit freundlichen Grüßen</p>
+			<p>
+				<i>Marcel Schommer</i></p>
 		</div>
 
-		<div id="BAOKontext">
-			<div id="contextMenuBAO11" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten11">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks11">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts11">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen11">Grafischer Befehl</p>
-			</div>
-			<div id="contextMenuBAO22" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten22">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks22">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts22">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen22">Grafischer Befehl</p>
-			</div>
-			<div id="contextMenuBAO33" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten33">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks33">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts33">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen33">Grafischer Befehl</p>
-			</div>
-			<div id="contextMenuBAO44" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten44">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks44">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts44">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen44">Grafischer Befehl</p>
-			</div>
-			<div id="contextMenuBAO55" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten55">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks55">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts55">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen55">Grafischer Befehl</p>
-			</div>
-			<div id="contextMenuBAO66" class="contextMenu" style="display: none;">
-				<p class="KMEintrag" id="KMbearbeiten66">EA bearbeiten</p>
-				<p><span class="KMEintrag"
-						id="KMnachLinks66">◀</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-						class="KMEintrag" id="KMnachRechts66">▶</span></p>
-				<p class="KMEintrag" id="KMUAöffnen66">Grafischer Befehl</p>
-			</div>
-		</div>
-	</div>
 
-	<!---- Toolbox ---->
-	<div id="Toolbox" style="visibility: visible;">
-		<p><b>Toolbox</b></p>
-	</div>
-
-	<!---- Infobox ---->
-	<div id="Infobox" style="visibility: visible;">
-		<h1>Infobox</h1>
-		<p>Sehr geehrte Kolleginnen und Kollegen,</p>
-		<p>ich stelle euch hier den "BAO-Creator" vor. Dabei handelt es sich um eine Möglichkeit, auf einfache Weise
-			eine BAO und den dazugehörigen Grafischen Befehl in einer einzigen Datei zu erstellen, zu speichern und zu
-			verschicken. </p>
-		<p>Daraus ergeben sich vielfältige Möglichkeiten bei der Planung und Durchführung von Polizeieinsätzen. Die
-			Möglichkeiten und die weitreichenden Vorteile zur Nutzung des BAO-Creators möchte ich euch hier
-			stichpunktartig vorstellen:</p>
-		<ul>
-			<li>Erstellung und Präsentation von polizeilichen BAO und grafischen Befehlen</li>
-			<li>nur eine einzige Datei - kein klassisches Programm oder eine App</li>
-			<li>PDV 100 konform</li>
-			<li>einfache und selbsterklärende Bedienung</li>
-			<li>Darstellung und Erstellung von große BAO mit mehreren Ebenen (EA/UA/UUA/UUUA etc.)</li>
-			<li>Darstellung von mehreren BAO gleichzeitig nebeneinander</li>
-			<li>Umgliederung im laufenden Einsatz per "Drag and Drop" bei automatischer Anpassung der Grafischen Befehle
-			</li>
-			<li>keine Formatierungen von Texten oder grafischen Elementen</li>
-			<li>Dokumentation von laufenden Einsätzen bei Umstrukturierungen der BAO</li>
-			<li>Dokumentation der erteilten Einzelaufträgen im laufenden Einsatz</li>
-			<li>Einsatz- und Unterabschnitte können ihre BAO/Untergliederungen und grafische Befehle einfügen</li>
-			<li>browserbasierend: Plattform- und Betriebssystemunabhängig</li>
-			<li>von auswertige Einheiten und andere Bundesländer unkompliziert nutzbar</li>
-			<li>keine Gefahr von Viren oder Malware</li>
-		</ul>
-		<p>technische Hinweise:</p>
-		<ul>
-			<li>Bei dem Dateiformat handelt es sich um eine html-Datei. Internetseiten sind in diesem Format
-				gespeichert. Damit ist sie Plattformunabhängig. Eine Installation ist nicht vorgesehen. Es wird
-				lediglich ein Internetbrowser (Edge, Chrome, Firefox etc.) benötigt. Eine Internetverbindung ist nicht
-				erforderlich. Sie kann auf jedem System mit einem Browser verwendet werden: PC, Tablet, Handy, TV-Geräte
-				mit integrierter Browser-Software etc.</li>
-			<li>Die Datei kann zentral abgelegt (Cloud, SharePoint/IntraPol, Netzwerklaufwerk) oder per Email verschickt
-				oder auf einem USB-Speicherstick abgelegt und weitergegeben werden. </li>
-			<li>Es wird kein gesonderte Software benötigt. Der Programmcode ist in JavaScript geschrieben und in der
-				html- Datei selbst enthalten. Das Einbringen von Schadcode (Viren etc.) ist nicht möglich. Der
-				Programm-Code ist für alle einsehbar, und Anpassungen in der Struktur oder dem Layout lassen sich bei
-				entsprechendem Sachverstand und Programmkenntnissen selbst realisieren oder weiter entwickeln.</li>
-			<li>Die Einsätze sind als einzelne Datensätze gespeichert und lassen sich in und aus anderen Anwendungen
-				portieren, z.B. Excel, Word, PowerPoint) So können auch verschiedene BAO und Grafische Befehle
-				zusammengeführt werden. </li>
-			<li>Wenn die Datei an einen zentralen Ort gespeichert und zur Verfügung gestellt wird, habe Einsatzkräfte
-				und EA/UA jederzeit die Möglichkeit, die aktuelle BAO und die aktuellen Einsatzaufträge für sich und
-				benachbarte Kräfte einzusehen. Veränderungen und Anpassungen sind sofort sichtbar und sorgen für
-				verbesserte Transparenz. </li>
-			<li>Weiterentwicklungen/Update können einfach durch eine neue Datei ersetzt werden. Ein reguläres Update
-				eines Programms ist nicht erforderlich. </li>
-		</ul>
-		<p><b>Besonderheit:</b></p>
-		<p>Die Speicherung der Datei ist aus sicherheitsgrünen wegen der Architektur der Internetbrowser nicht ohne
-			weiteres möglich. In der Regel muss für jede Speicherung eine neue Datei angelegt werden. Dies erfolgt
-			allerdings automatisch als Download und ist nicht aufwendig. </p>
-
-		<p><b>Ausblick</b> - folgende mögliche Erweiterungen sind mit dem vorhanden Programm bei Erweiterung des
-			Programmcodes möglich:</p>
-		<ul>
-			<li>Einbindung in ein Datenbanksystem</li>
-			<li>Einbindung in SharePoint (IntraPol)</li>
-			<li>Kräfteverwaltung</li>
-			<li>Einrichtung unterschiedlicher Benutzerrechter mit unterschiedlichen Ebenen. </li>
-			<li>Einbindung in EPSweb-Oberfläche oder eines seiner Folgeprojekte</li>
-		</ul>
-		<p>Ich würde mich freuen, wenn dir mein Tool gefällt und es dir bei deiner Arbeit ein Hilfe ist. </p>
-		<p>Mit freundlichen Grüßen</p>
-		<p><i>Marcel Schommer</i></p>
-
-	</div>
-
-	<!---- Programmablauf JavaScript ---->
-	<script>
-
+		<script>
 
 		'use strict';
+		
 		// Daten aus dem Bodytag auslesen
 
 		let EA_JSON = document.body.getAttribute('ea-data');
@@ -1161,7 +995,6 @@
 		let knopfname = [];
 		let Zeile = [];
 		let UA = false;
-
 
 		let letzteÄnderung = document.lastModified; // Datum der letzten Dateiänderung darstellen
 
@@ -1177,12 +1010,50 @@
 		BAO(true);
 
 		BAO_öffnen();
+			
+		Toolbox_verschieben();	
 
 		// Ende des regulären Programmablaufes...	
 
-
 		// ausgelagerte Funktionen
 
+		//Toolbox verschieben
+			
+			function Toolbox_verschieben()	{
+			
+				const draggable = document.getElementById("Toolbox");
+
+        		let isDragging = false;  // Flag to track whether the user is dragging
+        		let offsetX = 0;         // Offset between mouse and div's position
+        		let offsetY = 0;
+
+        		draggable.addEventListener("mousedown", (e) => {
+            		isDragging = true;
+
+            		// Calculate the offset between mouse pointer and div's position
+            		offsetX = e.clientX - draggable.offsetLeft;
+            		offsetY = e.clientY - draggable.offsetTop;
+
+            		// Change the cursor style
+            		draggable.style.cursor = "grabbing";
+       			});
+
+        		document.addEventListener("mousemove", (e) => {
+            		if (!isDragging) return;
+
+           			 // Update the position of the div based on mouse movement
+            		draggable.style.left = e.clientX - offsetX + "px";
+            		draggable.style.top = e.clientY - offsetY + "px";
+        		});
+
+        		document.addEventListener("mouseup", () => {
+            		isDragging = false;
+            		draggable.style.cursor = "grab";  // Reset the cursor style
+       			 });
+			
+			}
+		
+			
 		function Einsatzkopf() {
 
 			window.moveTo(0, 0);
@@ -1533,7 +1404,8 @@
 		}
 
 
-		function IndexENr(WertENr) { //die Funktion ermittelt den Index zur ENr (DatensatzID)
+		function IndexENr(WertENr) { 
+		    //die Funktion ermittelt den Index zur ENr (DatensatzID)
 			for (let i = 0; i < EA.length; i++) {
 				if (EA[i].ENr == WertENr) { return i; }
 			}
@@ -1658,6 +1530,7 @@
 			document.body.removeChild(a);
 		}
 
+
 		function Kontextmenu(x) { //hier wird das Kontextmenü für jeden einezelnen dargestellten Einsatzabschnitt dargestellt, damit es auch identifizierbar ist
 			EABlöcke += "<div id='contextMenu" + x + "' class='contextMenu' >";
 			EABlöcke += "<p class='KMEintrag' id='KMbearbeiten" + x + "'>EA bearbeiten</p>";
@@ -1717,6 +1590,7 @@
 
 			return übergabe;
 		}
+
 
 		function BAOKontextMEA(EANrKM) {
 			// Elemente abrufen
@@ -1985,15 +1859,18 @@
 			document.getElementById("Seite").style.visibility = "hidden";
 		}
 
+
 		function EAplus() {
 			neuerEA(DsNr);
 			GB_öffnen();
 		}
 
+
 		function BAOplus() {
 			neuerEA("");
 			BAO(true);
 		}
+
 
 		function importJSON() {
 			// Dateiinput-Element auswählen
@@ -2045,6 +1922,7 @@
 			document.getElementById("Import").style.visibility = "hidden";
 		}
 
+
 		function neu() {
 
 			let Bestätigung = confirm("ACHTUNG! Es werden alle Daten gelöscht, die Datei aber nicht überschrieben. Sie können die Datei anschließend unter einem anderen Namen speichern! Soll eine neue BAO/ein neuer Grafischer Befehl angelegt werden?");
@@ -2061,6 +1939,7 @@
 			}
 		}
 
+
 		function BAO_öffnen() {
 			BAO(true);
 			document.getElementById("Import").style.visibility = "hidden";
@@ -2068,6 +1947,7 @@
 			document.getElementById("Formular").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "visible";
 		}
+
 
 		function GB_öffnen() {
 			Einsatzkopf();
@@ -2078,6 +1958,7 @@
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
 
+
 		function IMPORT_öffnen() {
 			document.getElementById("Import").style.visibility = "visible";
 			document.getElementById("Seite").style.visibility = "hidden";
@@ -2085,15 +1966,27 @@
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
 
+
 		function Editor_öffnen() {
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "hidden";
 			document.getElementById("Formular").style.visibility = "visible";
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
+			
+		function InfoBox_öffnen() {
+			document.getElementById("InfoBox").style.visibility = "visible";
+		}	
+			
+		function InfoBox_schließen() {
+			document.getElementById("InfoBox").style.visibility = "hidden";
+		}		
 
+
+			
 	</script>
+		
+	
 
-</body>
 
-</html>
+</body><!---- Programmablauf JavaScript ----></html>
