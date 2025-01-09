@@ -9,7 +9,7 @@
 		<meta content="no-cache" http-equiv="cache-control">
 		<meta content="EPHK Schommer, Marcel, A 45/4, marcel.schommer@polizei.berlin.de" name="author">
 		<meta content="(c)2025 - Polizei Berlin" name="copyright">
-		<title>Grafischer Befehl</title>
+		<title>Grafischer Befehl Test</title>
 		
 
 <style type="text/css"> 
@@ -106,7 +106,7 @@
 
 	#Toolbox {
 	position: absolute;	
-	top: 50px;
+	top: 400px;
     left: 50px;
     display: flex;
     flex-direction: row;
@@ -555,9 +555,7 @@
 			</div>
 			
 			<div id="Digigruppe">
-				<!--<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button>
-				<button class="plus" id="BAO_gesamt" onclick="BAO_öffnen();">BAO</button>
-				<button class="plus" id="addPlus" onclick="EAplus(DsNr);">+</button> -->
+	
 				<svg id="LinienGB"> 
 					<line stroke="black" x1="174.9453125" x2="174.9453125" y1="204" y2="174"></line> 
 					<line stroke="black" x1="502.1953125" x2="502.1953125" y1="204" y2="174"></line>
@@ -799,13 +797,13 @@
 											<td class="Spalte1">
 												<label for="FüGrKräfte">FüGr-Kräfte</label></td>
 											<td class="Spalte2">
-												<input id="FeldFüGrKräfte" name="FeldFüGrKräfte"></td>
+												<span id="FeldFüGrKräfte" name="FeldFüGrKräfte"></span></td>
 										</tr>
 										<tr>
 											<td class="Spalte1">
 												<label for="Kräfte">Kräfte</label></td>
 											<td class="Spalte2">
-												<input id="FeldKräfte" name="FeldKräfte"></td>
+												<span id="FeldKräfte" name="FeldKräfte"></span></td>
 										</tr>
 										<tr>
 											<td class="Spalte1">
@@ -820,10 +818,10 @@
 												<input id="EZEO" name="EZEO"></td>
 										</tr>
 										<tr>
-											<!--	<td class="Spalte1">
+											<td class="Spalte1">
 												<label for="FEM">FEM</label></td>
 											<td class="Spalte2">
-												<input id="FeldFEM" name="FeldFEM" /></td> -->
+												<span id="FeldFEM" name="FeldFEM" ></span></td>
 										</tr>
 										<tr>
 											<td class="Spalte1">
@@ -834,13 +832,24 @@
 									</tbody>
 								</table>
 							</td>
+						<!-- Spalte 2 -->	
 							<td id="SpalteEinzelaufträge" style="padding: 10px; width: 300px;" valign="top">
+								
 								<label for="EAnlass">Anlass</label><br>
-								<br>
-								<br>
-								<label for="Einzelaufträge">Einzelaufträge</label></td>
+								<span id="FeldEAnlass" name="FeldEAnlass"></span>
+
+								<label for="Einzelaufträge">Einzelaufträge</label><br>
+								<span id="FeldEinzelaufträge" name="FeldEinzelaufträge"></span>
+
+							</td>
+
+						<!-- Spalte 3 -->		
 							<td id="SpalteSMH" style="padding: 10px; width: 200px;" valign="top">
-								<label for="UASMH">sonstige Maßnahmen und Hinweise</label></td>
+								
+								<label for="UASMH">sonstige Maßnahmen und Hinweise</label><br>
+								<span id="FeldUASMH" name="FeldUASMH"></td></span>
+								
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -848,7 +857,7 @@
 			<button class="plus" id="übertragen" onclick="ESpeichern();" style="width: 200px;">Übertragen</button><button class="plus" id="schließen" onclick="Schließen();" style="width: 200px;">ohne Speichern schließen</button><br>
 			<!--Kontrollfelder-->
 			<p style="font-family: Courier New; font-size: 10px; ">
-				EANr:<span id="KonEANr"> </span>- UANr: <span id="KonUANr"> </span> - oE:</p>
+				EANr:<span id="KonEANr"> </span>- UANr: <span id="KonUANr"> </span></p>
 		</div>
 		
 		<!---- Import ---->
@@ -882,11 +891,11 @@
 			<button class="plus" id="Exp" onclick="exportjson();">Exp.</button>
 			<button class="plus" id="Imp" onclick="Import();">Imp.</button>
 			<button class="plus" id="BAO_gesamt" onclick="BAO_öffnen();">BAO</button>
-			<button class="plus" id="GB" onclick="">GB</button>		
+			<button class="plus" id="GB" onclick="GB_öffnen();">GB</button>		
 			<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button>
 			<button class="plus" id="addPlus" onclick="EAplus(DsNr);">+</button>
 			<button class="plus" id="BAOplus" onclick="BAOplus();">+</button>
-			<button class="plus" id="Übersicht" onclick="">Ü</button>
+			<button class="plus" id="Übersicht" onclick="BAO_öffnen();">Ü</button>
 			<button class="plus" id="InfoBoxButton" onclick="InfoBox_öffnen();">i</button>
 			<p>
 		</div>
@@ -1008,10 +1017,12 @@
 		document.getElementById("Stand").innerHTML = letzteÄnderung2;	// Datum der letzten Dateiänderung darstellen
 
 		BAO(true);
-
-		BAO_öffnen();
 			
 		Toolbox_verschieben();	
+
+		Ansichten_aktualisieren()
+		
+		BAO_öffnen();
 
 		// Ende des regulären Programmablaufes...	
 
@@ -1184,11 +1195,7 @@
 		}
 
 
-		function BAO(BAODsNr) {
-
-			//BAO_öffnen();
-			//document.getElementById("BAOFenster").style.visibility = "visible";
-			//document.getElementById("Seite").style.visibility = "hidden";
+		function BAO(BAO_gesamt) { //BAO_gesamt kann die werte true und false haben. Bei true werden alle Einsäzte angezeigt, bei false nur ein einzelner Einsatz oder Einsatzabschnitte.
 
 			var BAOStruktur = "";
 
@@ -1199,7 +1206,7 @@
 			let BlID;
 			let BAOLinien = "";
 
-			if (BAODsNr) {
+			if (BAO_gesamt) {
 				for (let BAOBlock of EA) {
 					if (BAOBlock.darüber == "") BAOStruktur += Blockdarstellung(BAOBlock);  // der erste Block wird nur dargestellt, wenn es keinen EA darüber gibt. Es handelt sich um einen eigenständigen Einsatz.
 				}
@@ -1212,7 +1219,7 @@
 			document.getElementById("BAOGrafik").innerHTML = BAOStruktur;
 
 
-			let Durchlauf = 0; // Das erste Kästchen darf kein Strich ofen haben... 
+			let Durchlauf = 0; // Das erste Kästchen darf kein Strich oben haben... 
 
 			for (let Striche of EA) {
 
@@ -1299,7 +1306,7 @@
 					}, false);
 
 					//Verschieben
-					if (BAODsNr) { //nur verschiebar wenn es sich nicht um einen EA oder UA handelt
+					if (BAO_gesamt) { //nur verschiebar wenn es sich nicht um einen EA oder UA handelt
 						BlockDown.addEventListener('mousedown', function () { verschieben(DoppelklickObj); }, false)
 					}
 				}
@@ -1435,13 +1442,13 @@
 			//Auf Papierkorp abgelegt?
 			if (AufElementAbgelegt(PosX, PosY, "Papierkorb")) {
 				EALöschen(Start);
-				BAO(true);
+				Ansichten_aktualisieren()
 			}
 
 			//Auf Schere abgelegt?
 			if (AufElementAbgelegt(PosX, PosY, "Schere")) {
 				EAWirklichHerauslösen(Start);
-				BAO(true);
+				Ansichten_aktualisieren()
 			}
 
 			//Auf einem anderen Block abgelegt?
@@ -1472,10 +1479,7 @@
 						//neue "darüber" ersetzen
 						verschiebeDS.darüber = Ziel;
 
-						//Ansicht aktualisieren
-						Einsatzkopf();
-						Einsatzabschnitte();
-						BAO(true);
+						Ansichten_aktualisieren()
 					}
 				}
 			}
@@ -1570,7 +1574,9 @@
 			let KMentlassen = document.getElementById('KMentlassen' + EANrKM);
 			let KMlöschen = document.getElementById('KMlöschen' + EANrKM);
 
-			KMbearbeiten.addEventListener('click', function () { Editor(EANrKM); });
+			KMbearbeiten.addEventListener('click', function () { Editor(EANrKM);
+				console.log("EANrKM: "+ EANrKM);
+			 });
 			KMlinks.addEventListener('click', function () { shiftLeft(index); });
 			KMrechts.addEventListener('click', function () { shiftRight(index); });
 			KMUAöffnen.addEventListener('click', function () { UAöffnen(EANrKM); });
@@ -1620,7 +1626,11 @@
 			let KMrechts = document.getElementById('KMnachRechts' + EANrKM);
 			let KMUAöffnen = document.getElementById('KMUAöffnen' + EANrKM);
 
-			KMbearbeiten.addEventListener('click', function () { Editor(EANrKM); });
+			KMbearbeiten.addEventListener('click', function () { 
+				console.log("EANrKM: "+ EANrKM);
+				console.log("DsNr : " + DsNr);
+				Editor(EANrKM); 
+				});
 			KMlinks.addEventListener('click', function () { console.log("Links"); });
 			KMrechts.addEventListener('click', function () { console.log("Rechts"); });
 			KMUAöffnen.addEventListener('click', function () {
@@ -1635,7 +1645,7 @@
 			let Bestätigung = confirm("Soll der EA wirklich gelöscht werden? Die unterstellten UA werden ebenfalls gelöscht und können nicht wiederhergestellt werden. ");
 			if (Bestätigung) {
 				EAwirklichLöschen(EntferneDsNr);
-				Einsatzabschnitte();
+				Ansichten_aktualisieren()
 			}
 		}
 
@@ -1672,7 +1682,7 @@
 				EAV.UANr.splice(index - 1, 0, element);			// Füge es vor dem Element an der Position (index - 1) ein
 			}
 
-			Einsatzabschnitte();
+			Ansichten_aktualisieren()
 		}
 
 
@@ -1683,7 +1693,7 @@
 				EAV.UANr.splice(index + 1, 0, element); 			// Füge es am Ende des Arrays ein
 			}
 
-			Einsatzabschnitte();
+			Ansichten_aktualisieren()
 		}
 
 
@@ -1706,21 +1716,20 @@
 				t++;
 			}
 
-			Einsatzabschnitte(); //Datenansicht in den Einsatzabschnitten aktualisieren 
+			Ansichten_aktualisieren()
 		}
 
 
 		function UAöffnen(Aufklappen) {
 			DsNr = Aufklappen;
-			Einsatzkopf(); //Datenansicht  im Kopf aktualisieren
-			Einsatzabschnitte(); //Datenansicht in den Einsatzabschnitten aktualisieren 
+			Ansichten_aktualisieren();
 		}
 
 
 		function Editor(editnr) {
-			console.log("Nummer: " + editnr);
+			
+			console.log("Folgender Datensatz wird bearbeitet: " + editnr);
 			document.getElementById("Formular").style.visibility = "visible";
-			document.getElementById("Seite").style.visibility = "hidden";
 
 			let a3EA = EA.find(elem => elem.ENr === editnr);
 
@@ -1729,7 +1738,7 @@
 			//Formularfelder füllen
 			document.getElementById('KonEANr').innerHTML = a3EA["ENr"];
 			document.getElementById('KonUANr').innerHTML = a3EA["UANr"];
-			document.getElementById('KonDarüber').innerHTML = a3EA["darüber"];
+			//document.getElementById('KonDarüber').innerHTML = a3EA["darüber"];
 			document.getElementById('EDst').value = a3EA["EDst"];
 			document.getElementById('EiDatum').value = a3EA.EDatum;
 			document.getElementById('EBezeichnung').value = a3EA["EBezeichnung"];
@@ -1745,7 +1754,7 @@
 			document.getElementById('FeldKräfte').innerHTML = "<textarea id='Kräfte'>" + a3EA["Kräfte"] + "</textarea>";
 			document.getElementById('MZMO').value = a3EA["MZMO"];
 			document.getElementById('EZEO').value = a3EA["EZEO"];
-			//document.getElementById('FeldFEM').innerHTML = "<textarea id='FEM'>" +  a3EA["FEM"] + "</textarea>";
+			document.getElementById('FeldFEM').innerHTML = "<textarea id='FEM'>" +  a3EA["FEM"] + "</textarea>";
 			document.getElementById('FeldEinzelaufträge').innerHTML = "<textarea id='Einzelaufträge'>" + a3EA["Einzelaufträge"] + "</textarea>";
 			document.getElementById('FeldUASMH').innerHTML = "<textarea id='UASMH'>" + a3EA['SMH'] + "</textarea>";
 		}
@@ -1753,11 +1762,11 @@
 
 		function Schließen() { //Schießen den Editorfensters
 			document.getElementById("Formular").style.visibility = "hidden";
-			//document.getElementById("Seite").style.visibility = "visible";
+			Ansichten_aktualisieren();
 		}
 
 
-		function ESpeichern() {
+		function ESpeichern() {//Formulardatein in das Array übertragen
 
 			let a4EA = EA.find(elem => elem.ENr === AktuellEditDsNr);
 
@@ -1781,11 +1790,8 @@
 			a4EA["Einzelaufträge"] = document.getElementById('Einzelaufträge').value;
 			a4EA["SMH"] = document.getElementById('UASMH').value;
 
-			Einsatzkopf(); //Datenansicht  im Kopf aktualisieren
-			Einsatzabschnitte(); //Datenansicht in den Einsatzabschnitten aktualisieren 
-
 			document.getElementById('Formular').style.visibility = 'hidden';
-			document.getElementById("Seite").style.visibility = "visible";
+			Ansichten_aktualisieren();
 		}
 
 
@@ -1862,13 +1868,13 @@
 
 		function EAplus() {
 			neuerEA(DsNr);
-			GB_öffnen();
+			Ansichten_aktualisieren();
 		}
 
 
 		function BAOplus() {
 			neuerEA("");
-			BAO(true);
+			Ansichten_aktualisieren();
 		}
 
 
@@ -1913,7 +1919,7 @@
 					EA.push(ImportierterDatensatz);
 				});
 
-				BAO(true);
+				Ansichten_aktualisieren();
 
 			};
 
@@ -1935,26 +1941,26 @@
 				neuerEA(EA[0].ENr);
 				neuerEA(EA[0].ENr);
 
-				BAO_öffnen();
+				Ansichten_aktualisieren();
 			}
 		}
 
+		function Ansichten_aktualisieren() {
+			BAO(true);
+			Einsatzkopf();
+			Einsatzabschnitte();
+		}
 
 		function BAO_öffnen() {
-			BAO(true);
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "hidden";
-			document.getElementById("Formular").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "visible";
 		}
 
 
 		function GB_öffnen() {
-			Einsatzkopf();
-			Einsatzabschnitte();
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "visible";
-			document.getElementById("Formular").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
 
@@ -1962,7 +1968,6 @@
 		function IMPORT_öffnen() {
 			document.getElementById("Import").style.visibility = "visible";
 			document.getElementById("Seite").style.visibility = "hidden";
-			document.getElementById("Formular").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
 
@@ -1974,19 +1979,18 @@
 			document.getElementById("BAOFenster").style.visibility = "hidden";
 		}
 			
+
 		function InfoBox_öffnen() {
 			document.getElementById("InfoBox").style.visibility = "visible";
 		}	
 			
+
 		function InfoBox_schließen() {
 			document.getElementById("InfoBox").style.visibility = "hidden";
 		}		
 
 
-			
 	</script>
-		
-	
 
-
-</body><!---- Programmablauf JavaScript ----></html>
+</body>
+</html>
