@@ -155,6 +155,11 @@
 	z-index: 500;
 	}
 	
+	#Hoch {
+		font-size: 25px;
+		font-weight: bold;
+	}
+	
 	#Stift {
 	font-size: 20px;	
 	}	
@@ -893,10 +898,12 @@
 			<button class="plus" id="BAO_gesamt" onclick="BAO_öffnen();">BAO</button>
 			<button class="plus" id="GB" onclick="GB_öffnen();">GB</button>		
 			<button class="plus" id="Stift" onclick="Editor(DsNr);">✎</button>
-			<button class="plus" id="addPlus" onclick="EAplus(DsNr);">+</button>
-			<button class="plus" id="BAOplus" onclick="BAOplus();">+</button>
-			<button class="plus" id="Übersicht" onclick="BAO_öffnen();">Ü</button>
+			<button class="plus" id="addPlus" onclick="EAplus(DsNr);">E</button>
+			<button class="plus" id="BAOplus" onclick="BAOplus();">B</button>
+			<button class="plus" id="Übersicht" onclick="Übersicht();">Ü</button>
 			<button class="plus" id="InfoBoxButton" onclick="InfoBox_öffnen();">i</button>
+			<button class="plus" id="GB" onclick="Ansichten_aktualisieren();">A</button>
+			<button class="plus" id="Hoch" onclick="Höher_Stufen();">↑</button>
 			<p>
 		</div>
 		
@@ -1004,6 +1011,7 @@
 		let knopfname = [];
 		let Zeile = [];
 		let UA = false;
+		let Gesamtübersicht = true; // Wir der gesamte Einsatz oder nur ein EA dargestellt?
 
 		let letzteÄnderung = document.lastModified; // Datum der letzten Dateiänderung darstellen
 
@@ -1016,7 +1024,7 @@
 
 		document.getElementById("Stand").innerHTML = letzteÄnderung2;	// Datum der letzten Dateiänderung darstellen
 
-		BAO(true);
+		BAO(Gesamtübersicht);
 			
 		Toolbox_verschieben();	
 
@@ -1207,10 +1215,14 @@
 			let BAOLinien = "";
 
 			if (BAO_gesamt) {
+			    
+			 
 				for (let BAOBlock of EA) {
+				  
 					if (BAOBlock.darüber == "") BAOStruktur += Blockdarstellung(BAOBlock);  // der erste Block wird nur dargestellt, wenn es keinen EA darüber gibt. Es handelt sich um einen eigenständigen Einsatz.
 				}
 			} else {
+			 
 				for (let BAOBlock of EA) {
 					if (BAOBlock.ENr == DsNr) BAOStruktur += Blockdarstellung(BAOBlock);
 				}
@@ -1300,10 +1312,10 @@
 				if (BlockKlick) {
 
 					//Doppelklick öffnet den Grafischen Befehl - FEHLER
-					BlockKlick.addEventListener('dblclick', function () {
-						DsNr = DoppelklickObj.ENr;
-						GB_öffnen();
-					}, false);
+				//	BlockKlick.addEventListener('dblclick', function () {
+				//		DsNr = DoppelklickObj.ENr;
+				//		GB_öffnen();
+				//	}, false);
 
 					//Verschieben
 					if (BAO_gesamt) { //nur verschiebar wenn es sich nicht um einen EA oder UA handelt
@@ -1314,7 +1326,25 @@
 		}
 
 
-		function Blockdarstellung(Block) {
+        function GB_öffnen2(EA_AuswahlNr) {
+        
+            DsNr = EA_AuswahlNr;
+           
+            Ansichten_aktualisieren();
+            
+            GB_öffnen();
+        }
+        
+        function BAO_öffnen2(EA_AuswahlNr) {
+     
+            DsNr = EA_AuswahlNr;
+           
+            Ansichten_aktualisieren();
+            
+            BAO(false);
+        }
+
+		function Blockdarstellung(Block,Nr) {
 
 			let BAOStruktur2 = "";
 			BAOStruktur2 += "<div class='Block'>";
@@ -1326,13 +1356,22 @@
 			BAOStruktur2 += "<p class='EABlockInhalt'>EDst: " + Block.EDst + "</p>";
 			BAOStruktur2 += "<p class='EABlockInhalt'>EFührer: " + Block.EFührer + "</p>";
 			BAOStruktur2 += "<p class='EABlockInhalt'>Kräfte: " + Block.Kräfte + "<br></p>";
-			BAOStruktur2 += "</div>";			// Kasten schließen
+			BAOStruktur2 += "<button onclick='GB_öffnen2(" + Block.ENr + ");'>GB" + Block.ENr + "</button><br>";
+			BAOStruktur2 += "<button onclick='BAO_öffnen2(" + Block.ENr + ");'>BAO" + Block.ENr + "</button><br>";
+			BAOStruktur2 += "<button onclick='shiftLeft(" + Nr + "," + Block.darüber + ");'>links" + Block.ENr +  "</button><br> ";
+			BAOStruktur2 += "<button onclick='shiftRight(" + Nr + "," + Block.darüber + ");'>rechts" + Block.ENr + "</button><br> ";
+			BAOStruktur2 += "<button onclick='EAherauslösen(" + Block.ENr + ");'>entlassen" + Block.ENr + "</button><br> ";
+			BAOStruktur2 += "<button onclick='EALöschen(" + Block.ENr + ");'>löschen" + Block.ENr + "</button><br> ";
+			BAOStruktur2 += "<p>Blockindex: " + Nr + " - " + Block.darüber + "</div>";			// Kasten schließen
 
 			//BAOStruktur2 += BAOKontextmenu(Block.ENr);
 
+            let UBlockindex = -1;
+            
 			for (let UnterBlöcke of Block.UANr) {
+			    UBlockindex = UBlockindex + 1;
 				let UnterBlock = EA.find(elem => elem.ENr === UnterBlöcke);
-				BAOStruktur2 += Blockdarstellung(UnterBlock);
+				BAOStruktur2 += Blockdarstellung(UnterBlock, UBlockindex);
 			}
 
 			BAOStruktur2 += "</div>";	//Block schließen
@@ -1442,13 +1481,13 @@
 			//Auf Papierkorp abgelegt?
 			if (AufElementAbgelegt(PosX, PosY, "Papierkorb")) {
 				EALöschen(Start);
-				Ansichten_aktualisieren()
+				Ansichten_aktualisieren();
 			}
 
 			//Auf Schere abgelegt?
 			if (AufElementAbgelegt(PosX, PosY, "Schere")) {
 				EAWirklichHerauslösen(Start);
-				Ansichten_aktualisieren()
+				Ansichten_aktualisieren();
 			}
 
 			//Auf einem anderen Block abgelegt?
@@ -1575,10 +1614,10 @@
 			let KMlöschen = document.getElementById('KMlöschen' + EANrKM);
 
 			KMbearbeiten.addEventListener('click', function () { Editor(EANrKM);
-				console.log("EANrKM: "+ EANrKM);
+			
 			 });
-			KMlinks.addEventListener('click', function () { shiftLeft(index); });
-			KMrechts.addEventListener('click', function () { shiftRight(index); });
+			KMlinks.addEventListener('click', function () { shiftLeft(index,DsNr); });
+			KMrechts.addEventListener('click', function () { shiftRight(index,DsNr); });
 			KMUAöffnen.addEventListener('click', function () { UAöffnen(EANrKM); });
 			KMentlassen.addEventListener('click', function () { EAherauslösen(EANrKM); });
 			KMlöschen.addEventListener('click', function () { EALöschen(EANrKM); });
@@ -1627,8 +1666,6 @@
 			let KMUAöffnen = document.getElementById('KMUAöffnen' + EANrKM);
 
 			KMbearbeiten.addEventListener('click', function () { 
-				console.log("EANrKM: "+ EANrKM);
-				console.log("DsNr : " + DsNr);
 				Editor(EANrKM); 
 				});
 			KMlinks.addEventListener('click', function () { console.log("Links"); });
@@ -1645,7 +1682,7 @@
 			let Bestätigung = confirm("Soll der EA wirklich gelöscht werden? Die unterstellten UA werden ebenfalls gelöscht und können nicht wiederhergestellt werden. ");
 			if (Bestätigung) {
 				EAwirklichLöschen(EntferneDsNr);
-				Ansichten_aktualisieren()
+				Ansichten_aktualisieren();
 			}
 		}
 
@@ -1675,25 +1712,28 @@
 		}
 
 
-		function shiftLeft(index) { //Berechnungsfunktion, um die Einsatzabschnitte nach links zu verschieben
-			let EAV = EA.find(elem => elem.ENr === DsNr);
+		function shiftLeft(index,DsNr2) { //Berechnungsfunktion, um die Einsatzabschnitte nach links zu verschieben
+	
+			let EAV = EA.find(elem => elem.ENr === DsNr2);
 			if (index > 0 && index < EAV.UANr.length) {
+			   
 				const element = EAV.UANr.splice(index, 1)[0];  	// Entferne das Element an der gegebenen Position
 				EAV.UANr.splice(index - 1, 0, element);			// Füge es vor dem Element an der Position (index - 1) ein
 			}
 
-			Ansichten_aktualisieren()
+			Ansichten_aktualisieren();
 		}
 
 
-		function shiftRight(index) { //Berechnungsfunktion, um die Einsatzabschnitte nach rechts zu verschieben	
-			let EAV = EA.find(elem => elem.ENr === DsNr);
+		function shiftRight(index,DsNr2) { //Berechnungsfunktion, um die Einsatzabschnitte nach rechts zu verschieben	
+	
+			let EAV = EA.find(elem => elem.ENr === DsNr2);
 			if (index >= 0 && index < EAV.UANr.length - 1) {
 				const element = EAV.UANr.splice(index, 1)[0];		// Entferne das Element an der gegebenen Position
 				EAV.UANr.splice(index + 1, 0, element); 			// Füge es am Ende des Arrays ein
 			}
 
-			Ansichten_aktualisieren()
+			Ansichten_aktualisieren();
 		}
 
 
@@ -1716,7 +1756,7 @@
 				t++;
 			}
 
-			Ansichten_aktualisieren()
+			Ansichten_aktualisieren();
 		}
 
 
@@ -1728,7 +1768,6 @@
 
 		function Editor(editnr) {
 			
-			console.log("Folgender Datensatz wird bearbeitet: " + editnr);
 			document.getElementById("Formular").style.visibility = "visible";
 
 			let a3EA = EA.find(elem => elem.ENr === editnr);
@@ -1942,11 +1981,13 @@
 				neuerEA(EA[0].ENr);
 
 				Ansichten_aktualisieren();
+				
+				//BAO_öffnen();
 			}
 		}
 
 		function Ansichten_aktualisieren() {
-			BAO(true);
+			BAO(Gesamtübersicht);
 			Einsatzkopf();
 			Einsatzabschnitte();
 		}
@@ -1989,6 +2030,26 @@
 			document.getElementById("InfoBox").style.visibility = "hidden";
 		}		
 
+		
+		function Höher_Stufen() {
+			let DS = EA.find(elem => elem.ENr === DsNr); //DS="Datensatz"
+			console.log(EA);
+			console.log(DS);
+			console.log("DsNr: " + DsNr);
+			
+			if (DS.darüber) { 
+				DsNr = DS.darüber;
+				console.log("Prüfung: positiv"); }
+			else { console.log("Prüfung: negstiv"); }
+		
+			Ansichten_aktualisieren();
+		}
+	
+		function Übersicht() {
+			Gesamtübersicht = true;
+			Ansichten_aktualisieren();
+			BAO_öffnen();
+		}
 
 	</script>
 
