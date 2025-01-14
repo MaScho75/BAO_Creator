@@ -103,8 +103,7 @@
 	#Toolbox {
     width: 150px;
     margin: 10px;
-    display: flex;
-    flex-direction: column;
+    display: block;
     flex-wrap: wrap;
     align-content: flex-start;
     align-items: center;
@@ -112,6 +111,7 @@
 	z-index: 600;
 	border: solid thin;
 	background-color: rgba(250, 250, 250, 0.5);
+	text-align: center;
 	}
 
 /* Toolboxelemente */
@@ -178,7 +178,7 @@
 	#LinienGB {
 	position: absolute;
 	display: block;
-	width: 1000px;
+	width: 120%px;
 	height: 500px;
 	top: 0px;
 	left: 0px;
@@ -443,7 +443,13 @@
 	input {
 	width: 220px;
 	font-family: courier new;
-	}		
+	}	
+	
+	.Button_Formular {
+	    width: 200px;
+        height: 40px;
+        margin: 10px;
+	}
 	
 /* nicht druckbare Elemente */
 	@media print {
@@ -460,7 +466,7 @@
 	
 	<body ea-data="[{&quot;ENr&quot;:1,&quot;UANr&quot;:[2,3,4],&quot;darüber&quot;:&quot;&quot;,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:2,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:3,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;},{&quot;ENr&quot;:4,&quot;UANr&quot;:[],&quot;darüber&quot;:1,&quot;EBezeichnung&quot;:&quot;n.n.&quot;,&quot;EDatum&quot;:&quot;n.n.&quot;,&quot;EAnlass&quot;:&quot;n.n.&quot;,&quot;EFührer&quot;:&quot;n.n.&quot;,&quot;EDst&quot;:&quot;n.n.&quot;,&quot;EFTelefon&quot;:&quot;n.n.&quot;,&quot;EFRufname&quot;:&quot;n.n.&quot;,&quot;EDigi&quot;:&quot;n.n.&quot;,&quot;LFüGr&quot;:&quot;n.n.&quot;,&quot;FüGrRufname&quot;:&quot;n.n.&quot;,&quot;FüGrTelefon&quot;:&quot;n.n.&quot;,&quot;FüGrKräfte&quot;:&quot;n.n.&quot;,&quot;Kräfte&quot;:&quot;n.n.&quot;,&quot;MZMO&quot;:&quot;n.n.&quot;,&quot;EZEO&quot;:&quot;n.n.&quot;,&quot;FEM&quot;:&quot;n.n.&quot;,&quot;Einzelaufträge&quot;:&quot;n.n.&quot;,&quot;SMH&quot;:&quot;n.n.&quot;}]">
 
-	<div style="display: flex; flex-direction: row;">
+	<div id="Gesamtansicht" style="display: flex; flex-direction: row;">
 	
 	<!---- Toolbox ---->
 		<div id="Toolbox" style="visibility: visible;">
@@ -468,39 +474,37 @@
 			
 			<button class="plus" id="NEU" onclick="neu();">neue Datei</button>
 			
-			<svg width="60" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="300" y2="5" stroke="black" stroke-width="1" /></svg>
+			<svg width="140" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="140" y2="5" stroke="black" stroke-width="1" /></svg>
 			
 			<button class="plus" id="Speichern" onclick="speichernhtml();">💾   speichern unter</button>
 			<button class="plus" id="Export" onclick="exportjson();">Export</button>
 			<button class="plus" id="Importieren" onclick="Import();">Import</button>
 			
-			<svg width="60" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="300" y2="5" stroke="black" stroke-width="1" /></svg>
+			<svg width="140" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="140" y2="5" stroke="black" stroke-width="1" /></svg>
 			
 			<button class="plus" id="Übersicht" onclick="Übersicht();">Gesamtübersicht</button>
 			<button class="plus" id="AA" onclick="Ansichten_aktualisieren();">Ansicht aktualisieren</button>
-			<button class="plus" id="BAO" onclick="BAO_öffnen();">Ansicht BAO</button>
-			<button class="plus" id="GB" onclick="GB_öffnen();">Ansicht GB</button>
-			<button class="plus" id="BOS2" onclick="BAO_öffnen2();">BAO des EA</button>
-			<button class="plus" id="GB2" onclick="">GB des EA</button>
-			<button class="plus" id="Hoch" onclick="Höher_Stufen();">übergeordneter Einsatz</button>
+			<button class="plus" id="BAO_GB" onclick="BAO_GB();">BAO / GB</button>
+			<button class="plus" id="BAO2" onclick="BAO_öffnen2();">BAO des EA</button>
+			<button class="plus" id="GB2" onclick="GB_öffnen2();">GB des EA</button>
+			<button class="plus" id="Hoch" onclick="Höher_Stufen();">übergeordneter EA</button>
 			
-			<svg width="60" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="300" y2="5" stroke="black" stroke-width="1" /></svg>
+			<svg width="140" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="140" y2="5" stroke="black" stroke-width="1" /></svg>
 			
-			<button class="plus" id="Stift" onclick="Editor(DsNr);">✎ E  A beearbeiten </button>
+			<button class="plus" id="Stift" onclick="Editor();">✎ - EA beearbeiten </button>
 			<button class="plus" id="addEA" onclick="EAplus(DsNr);">+ EA</button>
 			<button class="plus" id="addEinsatz" onclick="BAOplus();">+ Einsatz</button>
-			<button class="plus" id="entlassen" onclick="">EA entlassen</button>
-			<button class="plus" id="löschen" onclick=""><span style='color: red'>X </span>EA löschen</button>
+			<button class="plus" id="entlassen" onclick="EAherauslösen(EA_select);">EA entlassen</button>
+			<button class="plus" id="löschen" onclick="EALöschen(EA_select);"><span style='color: red'>X </span>- EA löschen</button>
 			<button class="plus" id="links" onclick="shiftLeft();">← EA verschieben</button>
-			<button class="plus" id="recht" onclick="shiftRight();">→ EA verschieben</button>
+			<button class="plus" id="rechts" onclick="shiftRight();">→ EA verschieben</button>
 			
-			<svg width="60" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="300" y2="5" stroke="black" stroke-width="1" /></svg>
+			<svg width="140" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="140" y2="5" stroke="black" stroke-width="1"/></svg>
 			
 			<button class="plus" id="InfoBoxButton" onclick="InfoBox_öffnen();">Info/Hilfe</button>
 
 			<button class="plus" id="DruckButton" onclick="drucken();">drucken</button>
-			
-			<p>
+
 		</div>
 		
 		<div id="zweiteSeite">	
@@ -849,8 +853,9 @@
 					</tbody>
 				</table>
 			</form>
-			<button class="" id="übertragen" onclick="ESpeichern();" style="width: 200px;">Übertragen</button><button class="" id="schließen" onclick="Schließen();" style="width: 200px;">ohne Speichern schließen</button><br>
+			<button class="Button_Formular" id="übertragen" onclick="ESpeichern();" >Übertragen</button><button class="Button_Formular"" id="schließen" onclick="Schließen();" >ohne speichern schließen</button><br>
 			<!--Kontrollfelder-->
+			
 			<p style="font-family: Courier New; font-size: 10px; ">
 				EANr:<span id="KonEANr"> </span>- UANr: <span id="KonUANr"> </span></p>
 			</div>
@@ -866,7 +871,7 @@
 			<div id="BAOFenster" style="visibility: visible;">
 		    	<h1 style="text-align: center; margin: 0; margin-left: 200px;">
 			    	BAO</h1>
-				<p>Anlass: n.n.</p>
+				<p id="BAO_Anlass"></p>
 		    	
 				<div id="Linie">
 		    			<svg id="Linien">
@@ -905,14 +910,6 @@
 	    		
 		<!---- Infobox ---->
 		<div id="InfoBox">
-			<table>
-				<tr>
-					<td><button class="plus" id="InfoBoxSchließenButton" onclick="InfoBox_schließen();">X</button></td>
-					<td><h1>Infobox</h1></td>
-				</tr>
-			</table>
-			
-			
 			<p>Sehr geehrte Kollegin,<br>
 				sehr geehrter Kollege,<br><br></p>
 			<p>
@@ -947,7 +944,7 @@
 				<li>
 					von auswertige Einheiten und andere Bundesländer unkompliziert nutzbar</li>
 				<li>
-					keine Gefahr von Viren oder Malware</li>
+					kaum Gefahr von Viren oder Malware</li>
 			</ul>
 			<p>
 				<b>technische Hinweise:</b></p>
@@ -968,14 +965,14 @@
 			<p>
 				<b>Besonderheit:</b></p>
 			<p>
-				Die Speicherung der Datei ist aus sicherheitsgrünen wegen der Architektur der Internetbrowser nicht ohne weiteres möglich. In der Regel muss für jede Speicherung eine neue Datei angelegt werden. Dies erfolgt allerdings automatisch als Download und ist nicht aufwendig.<br><br></p>
+				Die Speicherung der Datei ist aus Sicherheitsgründen wegen der Architektur der Internetbrowser nicht ohne weiteres möglich. In der Regel muss für jede Speicherung eine neue Datei angelegt werden. Dies erfolgt allerdings automatisch als Download und ist nicht aufwendig.<br><br></p>
 			<p>
-				<b>Ausblick</b> - folgende mögliche Erweiterungen sind mit dem vorhanden Programm bei Erweiterung des Programmcodes möglich:</p>
+				<b>Ausblick</b> - folgende Erweiterungen sind mit dem vorhanden Programm bei Erweiterung des Programmcodes möglich:</p>
 			<ul>
 				<li>
 					Einbindung in ein Datenbanksystem</li>
 				<li>
-					Einbindung in SharePoint (IntraPol)</li>
+					Einbindung in CMS (SharePoint/IntraPol)</li>
 				<li>
 					Kräfteverwaltung</li>
 				<li>
@@ -992,7 +989,7 @@
 		</div>
     	</div>
     </div>
-	</body>
+
 
 	<script>
 
@@ -1014,21 +1011,18 @@
 		let EA_select = DsNr ; //Zeigt an, welcher EA für weitere Atkionen ausgewählt ist. 
 
 		let Blockfarbe = "rgba(240, 210, 140, 0.888)";
+		
+		let Text_BAO_Anlass;
 
-
-
-		let letzteÄnderung = document.lastModified; // Datum der letzten Dateiänderung darstellen
-
+        // Datum der letzten Dateiänderung darstellen
+		let letzteÄnderung = document.lastModified; 
 		let letzteÄnderung2 = letzteÄnderung.slice(8, 10) + "-";
 		letzteÄnderung2 += letzteÄnderung.slice(0, 2) + "-";
 		letzteÄnderung2 += letzteÄnderung.slice(3, 5) + " - ";
 		letzteÄnderung2 += letzteÄnderung.slice(11, 13) + "-";
 		letzteÄnderung2 += letzteÄnderung.slice(14, 16) + "-";
 		letzteÄnderung2 += letzteÄnderung.slice(17);
-
-		document.getElementById("Stand").innerHTML = letzteÄnderung2;	// Datum der letzten Dateiänderung darstellen
-
-		Toolbox_verschieben();	
+		document.getElementById("Stand").innerHTML = letzteÄnderung2;
 
 		Ansichten_aktualisieren();
 		
@@ -1223,7 +1217,22 @@
 //BAO		
 
 		function BAO(BAO_gesamt) { //BAO_gesamt kann die werte true und false haben. Bei true werden alle Einsäzte angezeigt, bei false nur ein einzelner Einsatz oder Einsatzabschnitte.
-
+            
+            //Einsatzanlass nur Darsten, wenn keine Gesamtübersicht ausgewählt ist. 
+            if(!Gesamtübersicht) {
+                
+                for (let V_Anlass of EA) {
+                    if (V_Anlass.ENr == DsNr) {
+                        Text_BAO_Anlass = "<b>Anlass: </b>" + V_Anlass.EAnlass;
+                    }
+                }
+            }
+            else {
+                Text_BAO_Anlass = "";
+            }
+            
+            document.getElementById("BAO_Anlass").innerHTML = Text_BAO_Anlass;//Einsatzanlass in der BAO mit und ohne Inhalt anzeigen. 
+			
 			var BAOStruktur = "";
 
 			let darstellung = false;
@@ -1234,8 +1243,6 @@
 			let BAOLinien = "";
 	
 			if (BAO_gesamt) {
-			    
-			    console.log("Klick3");
 
 				for (let BAOBlock of EA) {
 					if (BAOBlock.darüber == "") BAOStruktur += Blockdarstellung(BAOBlock);  // der erste Block wird nur dargestellt, wenn es keinen EA darüber gibt. Es handelt sich um einen eigenständigen Einsatz.
@@ -1284,11 +1291,6 @@
 					let obenP = (mitteX + korrektX ) + "," + (rect.top + korrektY);
 					let untenP = (mitteX + korrektX ) + "," + (rect.bottom + korrektY);
 
-					/*console.log("Striche.ENr: " + Striche.ENr);
-					console.log("mitteX: " + mitteX);
-					console.log("obenP: " + obenP);	
-					console.log("untenP: " + untenP);*/
-
 					//Linie sektrecht oben:
 					++Durchlauf;
 					if (Striche.darüber != "" && Durchlauf != 1) {
@@ -1332,45 +1334,26 @@
 
 			document.getElementById("Linien").innerHTML = BAOLinien;
 
-			//Blockselektion
-
-			let BAOKontextblockDiv = "";
-			//BAO - Kontextmenüerstellung
-			for (let xx of EA) {
-				BAOKontextblockDiv += BAOKontextmenu(xx.ENr);
-			}
-			
-			//BAO - Kontextmenüaktionen und Überwachung
-			for (let BAOBlock of EA) BAOKontextMEA(BAOBlock.ENr); //Kontextmenü - Überwachung
-
 			//BAO - Blockaktionen	
-			for (let DoppelklickObj of EA) {
-				let KlickBlock = "Block" + DoppelklickObj.ENr;
-				let DownBlock = "EABÜ" + DoppelklickObj.ENr;
+			for (let BlockKlickObj of EA) {
+				let KlickBlock = "Block" + BlockKlickObj.ENr;
+				let DownBlock = "EABÜ" + BlockKlickObj.ENr;
 				let BlockKlick = document.getElementById(KlickBlock);
 				let BlockDown = document.getElementById(DownBlock);
 
 				if (BlockKlick) {
 
-					//Doppelklick öffnet den Grafischen Befehl - FEHLER
-				//	BlockKlick.addEventListener('dblclick', function () {
-				//		DsNr = DoppelklickObj.ENr;
-				//		GB_öffnen();
-				//	}, false);
-
 					//Verschieben
 					if (BAO_gesamt) { //nur verschiebar wenn es sich nicht um einen EA oder UA handelt
-						BlockDown.addEventListener('mousedown', function () { verschieben(DoppelklickObj); }, false)
+						BlockDown.addEventListener('mousedown', function () { verschieben(BlockKlickObj); }, false)
 					}
 				}
 			}
 		}
 
- 
+
         function BAO_öffnen2() {
-            console.log("Klick1");
             DsNr = EA_select;
-            console.log("EA_select: " + EA_select);
             Gesamtübersicht = false;
             Ansichten_aktualisieren();
             BAO_öffnen();
@@ -1389,13 +1372,7 @@
 			BAOStruktur2 += "<p class='EABlockInhalt'>EDst: " + Block.EDst + "</p>";
 			BAOStruktur2 += "<p class='EABlockInhalt'>EFührer: " + Block.EFührer + "</p>";
 			BAOStruktur2 += "<p class='EABlockInhalt'>Kräfte: " + Block.Kräfte + "<br></p>";
-			BAOStruktur2 += "<button onclick='GB_öffnen2(" + Block.ENr + ");'>GB" + Block.ENr + "</button><br>";
-			BAOStruktur2 += "<button onclick='BAO_öffnen2(" + Block.ENr + ");'>BAO" + Block.ENr + "</button><br>";
-			BAOStruktur2 += "<button onclick='shiftLeft(" + Nr + "," + Block.darüber + ");'>links" + Block.ENr +  "</button><br> ";
-			BAOStruktur2 += "<button onclick='shiftRight(" + Nr + "," + Block.darüber + ");'>rechts" + Block.ENr + "</button><br> ";
-			BAOStruktur2 += "<button onclick='EAherauslösen(" + Block.ENr + ");'>entlassen" + Block.ENr + "</button><br> ";
-			BAOStruktur2 += "<button onclick='EALöschen(" + Block.ENr + ");'>löschen" + Block.ENr + "</button><br> ";
-			BAOStruktur2 += "<p>Blockindex: " + Nr + " - " + Block.darüber + "</div>";			// Kasten schließen
+			BAOStruktur2 += "</div>";			// Kasten schließen
 
 			//BAOStruktur2 += BAOKontextmenu(Block.ENr);
 
@@ -1532,13 +1509,13 @@
 
 //Editor	
 	
-		function Editor(editnr) {
+		function Editor() {
 			
-			document.getElementById("Formular").style.visibility = "visible";
+			Editor_öffnen();
 
-			let a3EA = EA.find(elem => elem.ENr === editnr);
+			let a3EA = EA.find(elem => elem.ENr === EA_select);
 
-			AktuellEditDsNr = editnr;
+			AktuellEditDsNr = EA_select;
 
 			//Formularfelder füllen
 			document.getElementById('KonEANr').innerHTML = a3EA["ENr"];
@@ -1567,6 +1544,7 @@
 
 		function Schließen() { //Schießen den Editorfensters
 					document.getElementById("Formular").style.visibility = "hidden";
+					document.getElementById("Toolbox").style.display = "block";
 					Ansichten_aktualisieren();
 				}
 
@@ -1594,7 +1572,8 @@
 			a4EA["Einzelaufträge"] = document.getElementById('Einzelaufträge').value;
 			a4EA["SMH"] = document.getElementById('UASMH').value;
 
-			document.getElementById('Formular').style.visibility = 'hidden';
+			document.getElementById("Formular").style.visibility = "hidden";
+			document.getElementById("Toolbox").style.display = "block";
 			Ansichten_aktualisieren();
 }
 
@@ -1602,10 +1581,32 @@
 
 //Ansichten ändern
 
+		function BAO_GB() {
+			let GB_offen = document.getElementById("Seite").style.visibility;
+			let BAO_offen = document.getElementById("BAOFenster").style.visibility;
+
+			console.log("GB :" + GB_offen);
+			console.log("BAO :" + BAO_offen);
+			
+			if (GB_offen == "visible") {BAO_öffnen();}
+			if (BAO_offen == "visible") {GB_öffnen();}
+
+		}
+
 		function Ansichten_aktualisieren() {
+		    
+		    let darüber_vorhanden = EA.find(elem => elem.ENr === DsNr);
+            if (darüber_vorhanden.darüber) {
+                document.getElementById("Hoch").disabled = false;
+                }
+            else {
+                document.getElementById("Hoch").disabled = true;
+            }  
+				
 			BAO(Gesamtübersicht);
 			Einsatzkopf();
 			Einsatzabschnitte();
+
 		}
 
 
@@ -1616,53 +1617,146 @@
 		}
 
 
+		function GB_öffnen2() {
+            DsNr = EA_select;
+            Ansichten_aktualisieren();
+            GB_öffnen();
+        }
+        
+        
 		function GB_öffnen() {
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "visible";
 			document.getElementById("BAOFenster").style.visibility = "hidden";
+			document.getElementById("InfoBox").style.visibility = "hidden";
+			document.getElementById("Formular").style.visibility = "hidden";
+			
+			document.getElementById("NEU").disabled = true;
+			document.getElementById("Speichern").disabled = false;
+			document.getElementById("Export").disabled = true;
+			document.getElementById("Importieren").disabled = true;
+			document.getElementById("Übersicht").disabled = false;
+			document.getElementById("AA").disabled = false;
+			document.getElementById("BAO2").disabled = false;
+			document.getElementById("GB2").disabled = false;
+			document.getElementById("Stift").disabled = false;
+			document.getElementById("addEA").disabled = false;
+			document.getElementById("addEinsatz").disabled = true;
+			document.getElementById("entlassen").disabled = false;
+			document.getElementById("löschen").disabled = false;
+			document.getElementById("links").disabled = false;
+			document.getElementById("rechts").disabled = false;
+			document.getElementById("InfoBoxButton").disabled = false;
+			document.getElementById("DruckButton").disabled = false;
+			
+			if (DsNr == EA_select) {
+				document.getElementById("entlassen").disabled = true;
+				document.getElementById("löschen").disabled = true;
+				document.getElementById("links").disabled = true;
+				document.getElementById("rechts").disabled = true;
+			}
 		}
-
-
-		function GB_öffnen2(EA_AuswahlNr) {
-            DsNr = EA_AuswahlNr;
-            Ansichten_aktualisieren();
-            GB_öffnen();
-        }
 
 
 		function BAO_öffnen() {
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "visible";
+			document.getElementById("InfoBox").style.visibility = "hidden";
+			document.getElementById("Formular").style.visibility = "hidden";
+			
+			document.getElementById("NEU").disabled = false;
+			document.getElementById("Speichern").disabled = false;
+			document.getElementById("Export").disabled = true;
+			document.getElementById("Importieren").disabled = true;
+			document.getElementById("Übersicht").disabled = false;
+			document.getElementById("AA").disabled = false;
+			document.getElementById("BAO2").disabled = false;
+			document.getElementById("GB2").disabled = false;
+			document.getElementById("Stift").disabled = false;
+			document.getElementById("addEA").disabled = false;
+			document.getElementById("addEinsatz").disabled = false;
+			document.getElementById("entlassen").disabled = false;
+			document.getElementById("löschen").disabled = false;
+			document.getElementById("links").disabled = false;
+			document.getElementById("rechts").disabled = false;
+			document.getElementById("InfoBoxButton").disabled = false;
+			document.getElementById("DruckButton").disabled = false;
+			
+			if (Gesamtübersicht) {
+				document.getElementById("Export").disabled = false;
+				document.getElementById("Importieren").disabled = false;
+				document.getElementById("addEinsatz").disabled = false;    
+			}
 		}
 
 
 		function Editor_öffnen() {
 			document.getElementById("Import").style.visibility = "hidden";
-			document.getElementById("Seite").style.visibility = "hidden";
+			document.getElementById("InfoBox").style.visibility = "hidden";
 			document.getElementById("Formular").style.visibility = "visible";
-			document.getElementById("BAOFenster").style.visibility = "hidden";
+			document.getElementById("Toolbox").style.display = "none";
 		}
 		
 
-		function IMPORT_öffnen() {
+		function Import() {
 			document.getElementById("Import").style.visibility = "visible";
 			document.getElementById("Seite").style.visibility = "hidden";
 			document.getElementById("BAOFenster").style.visibility = "hidden";
+			document.getElementById("InfoBox").style.visibility = "hidden";
+			document.getElementById("Formular").style.visibility = "hidden";
+
+			document.getElementById("NEU").disabled = true;
+			document.getElementById("Speichern").disabled = true;
+			document.getElementById("Export").disabled = true;
+			document.getElementById("Importieren").disabled = true;
+			document.getElementById("Übersicht").disabled = true;
+			document.getElementById("AA").disabled = true;
+			document.getElementById("BAO2").disabled = true;
+			document.getElementById("GB2").disabled = true;
+			document.getElementById("Stift").disabled = true;
+			document.getElementById("addEA").disabled = true;
+			document.getElementById("addEinsatz").disabled = true;
+			document.getElementById("entlassen").disabled = true;
+			document.getElementById("löschen").disabled = true;
+			document.getElementById("links").disabled = true;
+			document.getElementById("rechts").disabled = true;
+			document.getElementById("InfoBoxButton").disabled = false;
+			document.getElementById("DruckButton").disabled = true;
 		}
 
+		function InfoBox_öffnen() {
+			document.getElementById("Import").style.visibility = "hidden";
+			document.getElementById("Seite").style.visibility = "hidden";
+			document.getElementById("BAOFenster").style.visibility = "hidden";
+			document.getElementById("InfoBox").style.visibility = "visible";
+			document.getElementById("Formular").style.visibility = "hidden";
+
+			document.getElementById("NEU").disabled = true;
+			document.getElementById("Speichern").disabled = true;
+			document.getElementById("Export").disabled = true;
+			document.getElementById("Importieren").disabled = true;
+			document.getElementById("Übersicht").disabled = true;
+			document.getElementById("AA").disabled = true;
+			document.getElementById("BAO").disabled = false;
+			document.getElementById("GB").disabled = false;
+			document.getElementById("BAO2").disabled = true;
+			document.getElementById("GB2").disabled = true;
+			document.getElementById("Stift").disabled = true;
+			document.getElementById("addEA").disabled = true;
+			document.getElementById("addEinsatz").disabled = true;
+			document.getElementById("entlassen").disabled = true;
+			document.getElementById("löschen").disabled = true;
+			document.getElementById("links").disabled = true;
+			document.getElementById("rechts").disabled = true;
+			document.getElementById("InfoBoxButton").disabled = true;
+			document.getElementById("DruckButton").disabled = false;
+		}
 
 		function UAöffnen(Aufklappen) {
 			DsNr = Aufklappen;
 			Ansichten_aktualisieren();
 		}
-
-
-		function GB_öffnen2(EA_AuswahlNr) {
-            DsNr = EA_AuswahlNr;
-            Ansichten_aktualisieren();
-            GB_öffnen();
-        }
 
 
 //Kontextmenüfunktionen
@@ -1730,95 +1824,8 @@
 		}
 
 
-		function BAOKontextMEA(EANrKM) {
-			// Elemente abrufen
-
-			let targetElement = document.getElementById('Block' + EANrKM);
-			let KontextID = "contextMenuBAO" + EANrKM;
-			let contextMenu = document.getElementById(KontextID);
-
-			//solte das Element nicht existieren, dann die weitere funktion abbrechen.
-			if (!targetElement) return;
-
-			// Kontextmenü anzeigen
-
-			//targetElement.addEventListener('contextmenu', function (f) {
-			//	f.preventDefault(); // Standardkontextmenü unterdrücken
-			//	contextMenu.style.display = 'block';
-			//	contextMenu.style.left = f.pageX + 'px';
-			//	contextMenu.style.top = f.pageY + 'px';
-			//});
-
-			// Kontextmenü ausblenden, wenn außerhalb geklickt wird
-			//document.addEventListener('click', function () { contextMenu.style.display = 'none'; });
-
-			//Aktionen:
-			//let KMbearbeiten = document.getElementById('KMbearbeiten' + EANrKM);
-			//let KMlinks = document.getElementById('KMnachLinks' + EANrKM);
-			//let KMrechts = document.getElementById('KMnachRechts' + EANrKM);
-			//let KMUAöffnen = document.getElementById('KMUAöffnen' + EANrKM);
-
-			//KMbearbeiten.addEventListener('click', function () { 
-			//	Editor(EANrKM); 
-			//	});
-			//KMlinks.addEventListener('click', function () { console.log("Links"); });
-			//KMrechts.addEventListener('click', function () { console.log("Rechts"); });
-			//KMUAöffnen.addEventListener('click', function () {
-			//	DsNr = EANrKM;
-			//	GB_öffnen();
-			//});
-		}
 
 
-//Infobox
-
-		function InfoBox_öffnen() {
-			document.getElementById("InfoBox").style.visibility = "visible";
-		}	
-			
-
-		function InfoBox_schließen() {
-			document.getElementById("InfoBox").style.visibility = "hidden";
-		}		
-
-
-//ToolBox
-
-		function Toolbox_verschieben()	{
-			
-			const draggable = document.getElementById("Toolbox");
-
-			let isDragging = false;  // Flag to track whether the user is dragging
-			let offsetX = 0;         // Offset between mouse and div's position
-			let offsetY = 0;
-
-			draggable.addEventListener("mousedown", (e) => {
-				isDragging = true;
-
-				// Calculate the offset between mouse pointer and div's position
-				offsetX = e.clientX - draggable.offsetLeft;
-				offsetY = e.clientY - draggable.offsetTop;
-
-				// Change the cursor style
-				draggable.style.cursor = "grabbing";
-			   });
-
-			document.addEventListener("mousemove", (e) => {
-				if (!isDragging) return;
-
-					// Update the position of the div based on mouse movement
-				draggable.style.left = e.clientX - offsetX + "px";
-				draggable.style.top = e.clientY - offsetY + "px";
-			});
-
-			document.addEventListener("mouseup", () => {
-				isDragging = false;
-				draggable.style.cursor = "grab";  // Reset the cursor style
-				});
-		
-		}
-	
-			
 
 //Datenfunktionen - Speichern - Laden - Verarbeiten
 
@@ -1885,7 +1892,6 @@ a.click();
 // Entfernen des Links aus dem DOM
 document.body.removeChild(a);
 }
-
 
 		function importJSON() {
 			// Dateiinput-Element auswählen
@@ -2011,113 +2017,3 @@ document.body.removeChild(a);
 			EA[neueNr]["EFRufname"] = "n.n.";
 			EA[neueNr]["EDigi"] = "n.n.";
 			EA[neueNr]["LFüGr"] = "n.n.";
-			EA[neueNr]["FüGrRufname"] = "n.n.";
-			EA[neueNr]["FüGrTelefon"] = "n.n.";
-			EA[neueNr]["FüGrKräfte"] = "n.n.";
-			EA[neueNr]["Kräfte"] = "n.n.";
-			EA[neueNr]["MZMO"] = "n.n.";
-			EA[neueNr]["EZEO"] = "n.n.";
-			EA[neueNr]["FEM"] = "n.n.";
-			EA[neueNr]["Einzelaufträge"] = "n.n.";
-			EA[neueNr]["SMH"] = "n.n.";
-
-			if (x) {
-				let a5EA = EA.find(elem => elem.ENr === DsNr);
-				a5EA["UANr"].push(nENr); // bei UANr. die aktuelle EA-Nr angehängen
-			}
-		}
-
-
-		function EALöschen(EntferneDsNr) {
-
-			let Bestätigung = confirm("Soll der EA wirklich gelöscht werden? Die unterstellten UA werden ebenfalls gelöscht und können nicht wiederhergestellt werden. ");
-			if (Bestätigung) {
-				EAwirklichLöschen(EntferneDsNr);
-				Ansichten_aktualisieren();
-			}
-		}
-
-
-		function EAwirklichLöschen(EntferneEA) {
-				let IndexLöschen = IndexENr(EntferneEA);
-				if (EA[IndexLöschen].darüber) EAWirklichHerauslösen(EntferneEA); // Verbindung darüber löschen
-				EAwirklichLöschen2(EntferneEA); // erst dann die Einsätze nacheinander löschen
-		}
-
-
-		function EAwirklichLöschen2(EntferneEA) {
-				let IndexLöschen = IndexENr(EntferneEA);
-				for (let EAL of EA[IndexLöschen].UANr) EAwirklichLöschen2(EAL); // erst eventuell vorhandene UA löschen
-
-				// EA löschen
-				let nDsNr = false;
-
-				if (EA[IndexLöschen].ENr == DsNr) nDsNr = true; //wenn der fokussierte Datensatz gelöscht wird, muss ein neuer Datensatz festgelegt werden. 
-				EA.splice(IndexLöschen, 1);
-
-				if (nDsNr) {
-					for (let neuerDsNr of EA) {
-						if (!neuerDsNr.darüber) DsNr = neuerDsNr.ENr; // der erste Datensatz, der ohne "darüber" gefunden wird, bekommt den Focus!
-					}
-				}
-		}			
-
-
-
-//Einsatzabschnitte(); // Einsatzabschnitte neu darstellen
-
-		function EAplus() {
-				neuerEA(DsNr);
-				Ansichten_aktualisieren();
-		}
-
-
-		function BAOplus() {
-				neuerEA("");
-				Ansichten_aktualisieren();
-		}
-
-
-		function neu() {
-
-				let Bestätigung = confirm("ACHTUNG! Es werden alle Daten gelöscht, die Datei aber nicht überschrieben. Sie können die Datei anschließend unter einem anderen Namen speichern! Soll eine neue BAO/ein neuer Grafischer Befehl angelegt werden?");
-				if (Bestätigung) {
-					EA = []; // alle Daten löschern
-					neuerEA();
-					DsNr = EA[0].ENr;
-					EA[0].darüber = "";
-					neuerEA(EA[0].ENr);
-					neuerEA(EA[0].ENr);
-					neuerEA(EA[0].ENr);
-                    
-                    EA_select = 1;
-
-                    
-					Ansichten_aktualisieren();
-	            }
-		}
-
-
-		function Höher_Stufen() { //setzt den Fokus auf den darüberliegenden EA
-		    let DS = EA.find(elem => elem.ENr === DsNr); //DS="Datensatz"
-	    	if (DS.darüber) { 
-		    	DsNr = DS.darüber;
-		    	console.log("Prüfung: positiv"); }
-	    	else { console.log("Prüfung: negstiv"); }
-
-	    	Ansichten_aktualisieren();
-        }
-
-		function drucken() {
-			document.getElementById("Toolbox").style.display = "none";
-			Ansichten_aktualisieren();
-			window.print();
-			document.getElementById("Toolbox").style.display = "flex";
-			Ansichten_aktualisieren();
-
-		}
-
-	</script>
-
-
-</html>
