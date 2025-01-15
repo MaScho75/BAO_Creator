@@ -9,7 +9,7 @@
 		<meta content="no-cache" http-equiv="cache-control">
 		<meta content="EPHK Schommer, Marcel, A 45/4, marcel.schommer@polizei.berlin.de" name="author">
 		<meta content="(c)2025 - Polizei Berlin" name="copyright">
-		<title>Grafischer Befehl Test</title>
+		<title>BAO_Creator 2025</title>
 		
 
 <style type="text/css"> 
@@ -492,7 +492,7 @@
 			<svg width="140" height="10" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="5" x2="140" y2="5" stroke="black" stroke-width="1" /></svg>
 			
 			<button class="plus" id="Stift" onclick="Editor();">✎ - EA beearbeiten </button>
-			<button class="plus" id="addEA" onclick="EAplus(DsNr);">+ EA</button>
+			<button class="plus" id="addEA" onclick="EAplus();">+ EA</button>
 			<button class="plus" id="addEinsatz" onclick="BAOplus();">+ Einsatz</button>
 			<button class="plus" id="entlassen" onclick="EAherauslösen(EA_select);">EA entlassen</button>
 			<button class="plus" id="löschen" onclick="EALöschen(EA_select);"><span style='color: red'>X </span>- EA löschen</button>
@@ -853,7 +853,7 @@
 					</tbody>
 				</table>
 			</form>
-			<button class="Button_Formular" id="übertragen" onclick="ESpeichern();" >Übertragen</button><button class="Button_Formular"" id="schließen" onclick="Schließen();" >ohne speichern schließen</button><br>
+			<button class="Button_Formular" id="übertragen" onclick="ESpeichern();" >Übertragen</button><button class="Button_Formular" id="schließen" onclick="Schließen();" >ohne speichern schließen</button><br>
 			<!--Kontrollfelder-->
 			
 			<p style="font-family: Courier New; font-size: 10px; ">
@@ -1007,6 +1007,7 @@
 		let Zeile = [];
 		let UA = false;
 		let Gesamtübersicht = true; // Wir der gesamte Einsatz oder nur ein EA dargestellt?
+		let DsNr_ist_Einsatz = true; 
 		
 		let EA_select = DsNr ; //Zeigt an, welcher EA für weitere Atkionen ausgewählt ist. 
 
@@ -1027,7 +1028,7 @@
 		Ansichten_aktualisieren();
 		
 		BAO_öffnen();
-		
+		console.log("Test2");
 		//GB_öffnen();
 
 // Ende des regulären Programmablaufes...	
@@ -1068,6 +1069,10 @@
 			markierterKopf.addEventListener('click', function() {
 				EA_select = DsNr;
 				Ansichten_aktualisieren();
+				document.getElementById("links").disabled = false;
+			    document.getElementById("rechts").disabled = false;
+			    document.getElementById("entlassen").disabled = false;
+				
 			});
 			
 		}
@@ -1213,23 +1218,18 @@
 		}
 
 
-
 //BAO		
 
 		function BAO(BAO_gesamt) { //BAO_gesamt kann die werte true und false haben. Bei true werden alle Einsäzte angezeigt, bei false nur ein einzelner Einsatz oder Einsatzabschnitte.
             
-            //Einsatzanlass nur Darsten, wenn keine Gesamtübersicht ausgewählt ist. 
+            //Einsatzanlass nur Darstellen, wenn keine Gesamtübersicht ausgewählt ist. 
             if(!Gesamtübersicht) {
-                
                 for (let V_Anlass of EA) {
                     if (V_Anlass.ENr == DsNr) {
                         Text_BAO_Anlass = "<b>Anlass: </b>" + V_Anlass.EAnlass;
                     }
                 }
-            }
-            else {
-                Text_BAO_Anlass = "";
-            }
+            } else { Text_BAO_Anlass = "<b>*** GESAMTÜBERSICHT ***</b>";}
             
             document.getElementById("BAO_Anlass").innerHTML = Text_BAO_Anlass;//Einsatzanlass in der BAO mit und ohne Inhalt anzeigen. 
 			
@@ -1352,14 +1352,6 @@
 		}
 
 
-        function BAO_öffnen2() {
-            DsNr = EA_select;
-            Gesamtübersicht = false;
-            Ansichten_aktualisieren();
-            BAO_öffnen();
-        }
-
-
 		function Blockdarstellung(Block,Nr) {
 
 			let BAOStruktur2 = "";
@@ -1388,8 +1380,6 @@
 
 			return BAOStruktur2;
 		}
-
-
 
 
 //BAO - Funktionen zum Verschieben von EA
@@ -1548,6 +1538,7 @@
 					Ansichten_aktualisieren();
 				}
 
+		
 		function ESpeichern() {//Formulardatein in das Array übertragen
 
 			let a4EA = EA.find(elem => elem.ENr === AktuellEditDsNr);
@@ -1580,32 +1571,22 @@
 
 
 //Ansichten ändern
+		
+		function Ansichten_aktualisieren() {
+						
+				BAO(Gesamtübersicht);
+				Einsatzkopf();
+				Einsatzabschnitte();
+		
+		}
 
+		
 		function BAO_GB() {
 			let GB_offen = document.getElementById("Seite").style.visibility;
 			let BAO_offen = document.getElementById("BAOFenster").style.visibility;
 
-			console.log("GB :" + GB_offen);
-			console.log("BAO :" + BAO_offen);
-			
 			if (GB_offen == "visible") {BAO_öffnen();}
 			if (BAO_offen == "visible") {GB_öffnen();}
-
-		}
-
-		function Ansichten_aktualisieren() {
-		    
-		    let darüber_vorhanden = EA.find(elem => elem.ENr === DsNr);
-            if (darüber_vorhanden.darüber) {
-                document.getElementById("Hoch").disabled = false;
-                }
-            else {
-                document.getElementById("Hoch").disabled = true;
-            }  
-				
-			BAO(Gesamtübersicht);
-			Einsatzkopf();
-			Einsatzabschnitte();
 
 		}
 
@@ -1637,6 +1618,7 @@
 			document.getElementById("Importieren").disabled = true;
 			document.getElementById("Übersicht").disabled = false;
 			document.getElementById("AA").disabled = false;
+			document.getElementById("BAO_GB").disabled = false;
 			document.getElementById("BAO2").disabled = false;
 			document.getElementById("GB2").disabled = false;
 			document.getElementById("Stift").disabled = false;
@@ -1686,9 +1668,38 @@
 			if (Gesamtübersicht) {
 				document.getElementById("Export").disabled = false;
 				document.getElementById("Importieren").disabled = false;
-				document.getElementById("addEinsatz").disabled = false;    
+				document.getElementById("addEinsatz").disabled = false; 
+				document.getElementById("Übersicht").disabled = true;
+				document.getElementById("BAO_GB").disabled = true;
+			} else {
+				document.getElementById("Export").disabled = true;
+				document.getElementById("Importieren").disabled = true;
+				document.getElementById("addEinsatz").disabled = true; 
+				document.getElementById("Übersicht").disabled = false;
+				document.getElementById("BAO_GB").disabled = false;
 			}
+
+			if (DsNr_ist_Einsatz) {
+				document.getElementById("Hoch").disabled = true;
+				document.getElementById("links").disabled = true;
+				document.getElementById("rechts").disabled = true;
+			} else {
+				document.getElementById("Hoch").disabled = false
+				document.getElementById("links").disabled = false;
+				document.getElementById("rechts").disabled = false;
+			}
+
+			Prüfung_Einsatz();
+			
 		}
+
+		
+		function BAO_öffnen2() {
+            DsNr = EA_select;
+            Gesamtübersicht = false;
+            Ansichten_aktualisieren();
+            BAO_öffnen();
+        }
 
 
 		function Editor_öffnen() {
@@ -1712,6 +1723,7 @@
 			document.getElementById("Importieren").disabled = true;
 			document.getElementById("Übersicht").disabled = true;
 			document.getElementById("AA").disabled = true;
+			document.getElementById("BAO_GB").disabled = false;
 			document.getElementById("BAO2").disabled = true;
 			document.getElementById("GB2").disabled = true;
 			document.getElementById("Stift").disabled = true;
@@ -1725,6 +1737,7 @@
 			document.getElementById("DruckButton").disabled = true;
 		}
 
+		
 		function InfoBox_öffnen() {
 			document.getElementById("Import").style.visibility = "hidden";
 			document.getElementById("Seite").style.visibility = "hidden";
@@ -1738,8 +1751,7 @@
 			document.getElementById("Importieren").disabled = true;
 			document.getElementById("Übersicht").disabled = true;
 			document.getElementById("AA").disabled = true;
-			document.getElementById("BAO").disabled = false;
-			document.getElementById("GB").disabled = false;
+			document.getElementById("BAO_GB").disabled = false;
 			document.getElementById("BAO2").disabled = true;
 			document.getElementById("GB2").disabled = true;
 			document.getElementById("Stift").disabled = true;
@@ -1753,80 +1765,43 @@
 			document.getElementById("DruckButton").disabled = false;
 		}
 
+		
 		function UAöffnen(Aufklappen) {
 			DsNr = Aufklappen;
 			Ansichten_aktualisieren();
 		}
 
-
-//Kontextmenüfunktionen
-
-		function Kontextmenu(x) { //hier wird das Kontextmenü für jeden einezelnen dargestellten Einsatzabschnitt dargestellt, damit es auch identifizierbar ist
-			EABlöcke += "<div id='contextMenu" + x + "' class='contextMenu' >";
-			EABlöcke += "<p class='KMEintrag' id='KMbearbeiten" + x + "'>EA bearbeiten</p>";
-			EABlöcke += "<p><span class='KMEintrag' id='KMnachLinks" + x + "'>&#9664;</span>";
-			EABlöcke += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			EABlöcke += "<span class='KMEintrag' id='KMnachRechts" + x + "'>&#9654;</span></p>";
-			EABlöcke += "<p class='KMEintrag' id='KMUAöffnen" + x + "'>Grafischer Befehl</p>";
-			EABlöcke += "<p class='KMEintrag' id='KMentlassen" + x + "'>EA entlassen</p>";
-			EABlöcke += "<p class='KMEintrag' id='KMlöschen" + x + "'>EA löschen</p>";
-			EABlöcke += "</div>";
+		
+		function drucken() {
+			document.getElementById("Toolbox").style.display = "none";
+			document.getElementById("Linien").style.left = "0px";
+			Ansichten_aktualisieren();
+			window.print();
+			document.getElementById("Toolbox").style.display = "flex";
+			document.getElementById("Linien").style.left = "-200px";
+			Ansichten_aktualisieren();
 		}
 
-
-		function KontextMEA(EANrKM, index) {
-
-			// Elemente abrufen
-			var targetElement = document.getElementById('Einsatzabschnitt' + EANrKM);
-			var KontextID = "contextMenu" + EANrKM;
-			var contextMenu = document.getElementById(KontextID);
-
-			// Kontextmenü anzeigen
-			targetElement.addEventListener('contextmenu', function (e) {
-				e.preventDefault(); // Standardkontextmenü unterdrücken
-				contextMenu.style.display = 'block';
-				contextMenu.style.left = e.pageX + 'px';
-				contextMenu.style.top = e.pageY + 'px';
-			});
-
-			// Kontextmenü ausblenden, wenn außerhalb geklickt wird
-			document.addEventListener('click', function () { contextMenu.style.display = 'none'; });
-
-			//Aktionen:
-			let KMbearbeiten = document.getElementById('KMbearbeiten' + EANrKM);
-			let KMlinks = document.getElementById('KMnachLinks' + EANrKM);
-			let KMrechts = document.getElementById('KMnachRechts' + EANrKM);
-			let KMUAöffnen = document.getElementById('KMUAöffnen' + EANrKM);
-			let KMentlassen = document.getElementById('KMentlassen' + EANrKM);
-			let KMlöschen = document.getElementById('KMlöschen' + EANrKM);
-
-			KMbearbeiten.addEventListener('click', function () { Editor(EANrKM);
+		
+		function Prüfung_Einsatz() {
+			let DS = EA.find(elem => elem.ENr === EA_select); //DS="Datensatz"
+			if (!DS.darüber) {
+			   
+			    DsNr = EA_select;
+			    document.getElementById("links").disabled = true;
+			    document.getElementById("rechts").disabled = true;
+			    document.getElementById("entlassen").disabled = true;
+			  
+			    }
+            else {
+               document.getElementById("links").disabled = false;
+			   document.getElementById("rechts").disabled = false;
+			   document.getElementById("entlassen").disabled = false;
 			
-			 });
-			KMlinks.addEventListener('click', function () { shiftLeft(index,DsNr); });
-			KMrechts.addEventListener('click', function () { shiftRight(index,DsNr); });
-			KMUAöffnen.addEventListener('click', function () { UAöffnen(EANrKM); });
-			KMentlassen.addEventListener('click', function () { EAherauslösen(EANrKM); });
-			KMlöschen.addEventListener('click', function () { EALöschen(EANrKM); });
+            }
 		}
 
-
-		function BAOKontextmenu(x) { //hier wird das Kontextmenü für jeden einezelnen dargestellten Einsatzabschnitt dargestellt, damit es auch identifizierbar ist
-			let übergabe = "<div id='contextMenuBAO" + x + "' class='contextMenu' >";
-			übergabe += "<p class='KMEintrag' id='KMbearbeiten" + x + "'>EA bearbeiten</p>";
-			übergabe += "<p><span class='KMEintrag' id='KMnachLinks" + x + "'>&#9664;</span>";
-			übergabe += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-			übergabe += "<span class='KMEintrag' id='KMnachRechts" + x + "'>&#9654;</span></p>";
-			übergabe += "<p class='KMEintrag' id='KMUAöffnen" + x + "'>Grafischer Befehl</p>";
-			übergabe += "</div>";
-
-			return übergabe;
-		}
-
-
-
-
-
+		
 //Datenfunktionen - Speichern - Laden - Verarbeiten
 
 		function Zeitstempel() {
@@ -1853,12 +1828,6 @@
 		}
 
 
-		function Import() {
-			document.getElementById("Import").style.visibility = "visible";
-			document.getElementById("Seite").style.visibility = "hidden";
-		}
-
-
 		function IndexENr(WertENr) { //die Funktion ermittelt den Index zur ENr (DatensatzID)
 			for (let i = 0; i < EA.length; i++) {
 				if (EA[i].ENr == WertENr) { return i; }
@@ -1868,30 +1837,30 @@
 
 		function speichernhtml() {
 
-// Array in JSON umwandeln
-var EA_AlsJSON = JSON.stringify(EA);
-
-// JSON in HTML speichern (als Beispiel im body-Element)
-document.body.setAttribute('EA-DATA', EA_AlsJSON);
-
-// Den gesamten HTML-Code der Seite erfassen
-var htmlCode = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-
-// Erstellen eines Blob-Objekts mit dem HTML-Code
-var blob = new Blob([htmlCode], { type: "text/html" });
-
-// Erstellen eines Download-Links
-var a = document.createElement("a");
-a.href = URL.createObjectURL(blob);
-a.download = Zeitstempel() + " - Grafischer Befehl.html";
-
-// Hinzufügen des Links zum DOM und Auslösen des Klicks
-document.body.appendChild(a);
-a.click();
-
-// Entfernen des Links aus dem DOM
-document.body.removeChild(a);
-}
+            // Array in JSON umwandeln
+            var EA_AlsJSON = JSON.stringify(EA);
+            
+            // JSON in HTML speichern (als Beispiel im body-Element)
+            document.body.setAttribute('EA-DATA', EA_AlsJSON);
+            
+            // Den gesamten HTML-Code der Seite erfassen
+            var htmlCode = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            // Erstellen eines Blob-Objekts mit dem HTML-Code
+            var blob = new Blob([htmlCode], { type: "text/html" });
+            
+            // Erstellen eines Download-Links
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = Zeitstempel() + " - Grafischer Befehl.html";
+            
+            // Hinzufügen des Links zum DOM und Auslösen des Klicks
+            document.body.appendChild(a);
+            a.click();
+            
+            // Entfernen des Links aus dem DOM
+            document.body.removeChild(a);
+        }
 
 		function importJSON() {
 			// Dateiinput-Element auswählen
@@ -1913,7 +1882,7 @@ document.body.removeChild(a);
 					var ImportierteEA = JSON.parse(e.target.result);
 
 				} catch (error) {
-					console.error('Fehler beim Parsen der JSON-Datei:', error);
+	
 					alert("Es ist ein Fehler aufgetreten! Die Datei wurde nicht importiert!");
 					return;
 				}
@@ -2017,3 +1986,100 @@ document.body.removeChild(a);
 			EA[neueNr]["EFRufname"] = "n.n.";
 			EA[neueNr]["EDigi"] = "n.n.";
 			EA[neueNr]["LFüGr"] = "n.n.";
+			EA[neueNr]["FüGrRufname"] = "n.n.";
+			EA[neueNr]["FüGrTelefon"] = "n.n.";
+			EA[neueNr]["FüGrKräfte"] = "n.n.";
+			EA[neueNr]["Kräfte"] = "n.n.";
+			EA[neueNr]["MZMO"] = "n.n.";
+			EA[neueNr]["EZEO"] = "n.n.";
+			EA[neueNr]["FEM"] = "n.n.";
+			EA[neueNr]["Einzelaufträge"] = "n.n.";
+			EA[neueNr]["SMH"] = "n.n.";
+
+			if (x) {
+				let a5EA = EA.find(elem => elem.ENr === DsNr);
+				a5EA["UANr"].push(nENr); // bei UANr. die aktuelle EA-Nr angehängen
+			}
+		}
+
+
+		function EALöschen(EntferneDsNr) {
+
+			let Bestätigung = confirm("Soll der EA wirklich gelöscht werden? Die unterstellten UA werden ebenfalls gelöscht und können nicht wiederhergestellt werden. ");
+			if (Bestätigung) {
+				EAwirklichLöschen(EntferneDsNr);
+				Ansichten_aktualisieren();
+			}
+		}
+
+
+		function EAwirklichLöschen(EntferneEA) {
+				let IndexLöschen = IndexENr(EntferneEA);
+				if (EA[IndexLöschen].darüber) EAWirklichHerauslösen(EntferneEA); // Verbindung darüber löschen
+				EAwirklichLöschen2(EntferneEA); // erst dann die Einsätze nacheinander löschen
+		}
+
+
+		function EAwirklichLöschen2(EntferneEA) {
+				let IndexLöschen = IndexENr(EntferneEA);
+				for (let EAL of EA[IndexLöschen].UANr) EAwirklichLöschen2(EAL); // erst eventuell vorhandene UA löschen
+
+				// EA löschen
+				let nDsNr = false;
+
+				if (EA[IndexLöschen].ENr == DsNr) {nDsNr = true;} //wenn der fokussierte Datensatz gelöscht wird, muss ein neuer Datensatz festgelegt werden. 
+				EA.splice(IndexLöschen, 1);
+
+				if (nDsNr) {
+					for (let neuerDsNr of EA) {
+						if (!neuerDsNr.darüber) DsNr = neuerDsNr.ENr; // der erste Datensatz, der ohne "darüber" gefunden wird, bekommt den Focus!
+					}
+				}
+		}			
+
+
+
+//Einsatzabschnitte(); // Einsatzabschnitte neu darstellen
+
+		function EAplus() {
+				neuerEA(EA_select);
+				Ansichten_aktualisieren();
+		}
+
+
+		function BAOplus() {
+				neuerEA("");
+				Ansichten_aktualisieren();
+		}
+
+
+		function neu() {
+
+				let Bestätigung = confirm("ACHTUNG! Es werden alle Daten gelöscht, die Datei aber nicht überschrieben. Sie können die Datei anschließend unter einem anderen Namen speichern! Soll eine neue BAO/ein neuer Grafischer Befehl angelegt werden?");
+				if (Bestätigung) {
+					EA = []; // alle Daten löschern
+					neuerEA();
+					DsNr = EA[0].ENr;
+					EA[0].darüber = "";
+					neuerEA(EA[0].ENr);
+					neuerEA(EA[0].ENr);
+					neuerEA(EA[0].ENr);
+            
+                    EA_select = 1;
+
+					Ansichten_aktualisieren();
+	            }
+		}
+
+
+		function Höher_Stufen() { //setzt den Fokus auf den darüberliegenden EA
+		    let DS = EA.find(elem => elem.ENr === DsNr); //DS="Datensatz"
+	    	if (DS.darüber) { DsNr = DS.darüber; }
+
+	    	Ansichten_aktualisieren();
+        }
+
+	</script>
+</body>
+
+</html>
