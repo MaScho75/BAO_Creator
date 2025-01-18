@@ -9,7 +9,7 @@
 		<meta content="no-cache" http-equiv="cache-control">
 		<meta content="EPHK Schommer, Marcel, A 45/4, marcel.schommer@polizei.berlin.de" name="author">
 		<meta content="(c)2025 - Polizei Berlin" name="copyright">
-		<title>BAO_Creator 2025</title>
+		<title>BAO Creator 2025</title>
 		
 
 <style type="text/css"> 
@@ -172,8 +172,6 @@
     left: -200px;
     }
 
-	#Linie {
-	}
 
 	#LinienGB {
 	position: absolute;
@@ -494,8 +492,8 @@
 			<button class="plus" id="Stift" onclick="Editor();">✎ - EA beearbeiten </button>
 			<button class="plus" id="addEA" onclick="EAplus();">+ EA</button>
 			<button class="plus" id="addEinsatz" onclick="BAOplus();">+ Einsatz</button>
-			<button class="plus" id="entlassen" onclick="EAherauslösen(EA_select);">EA entlassen</button>
-			<button class="plus" id="löschen" onclick="EALöschen(EA_select);"><span style='color: red'>X </span>- EA löschen</button>
+			<button class="plus" id="entlassen" onclick="EA_entlassen(EA_select);">EA entlassen</button>
+			<button class="plus" id="löschen" onclick="EA_löschen(EA_select);"><span style='color: red'>X </span>- EA löschen</button>
 			<button class="plus" id="links" onclick="shiftLeft();">← EA verschieben</button>
 			<button class="plus" id="rechts" onclick="shiftRight();">→ EA verschieben</button>
 			
@@ -1069,9 +1067,6 @@
 			markierterKopf.addEventListener('click', function() {
 				EA_select = DsNr;
 				Ansichten_aktualisieren();
-				document.getElementById("links").disabled = false;
-			    document.getElementById("rechts").disabled = false;
-			    document.getElementById("entlassen").disabled = false;
 				
 			});
 			
@@ -1942,30 +1937,30 @@
 		}
 
 
-		function EAherauslösen(EAHerauslösen) {
+		function EA_entlassen(EA_Nr) {
 
 			let Bestätigung = confirm("Soll der EA wirklich aus dem Einsatz enlassen bzw. aus dieser BAO ausgeglieder werden? Sollten unterstellten UA vorhanden sein, bleiben diese in ihrem bestehenden Unterstellungsverhältnis. Der EA wird in der Gesamt-BAO als eigener Einsatz angezeigt. Umgliederungen können in der Gesamt-BAO-Ansicht geändert werden. ");
-			if (Bestätigung) { EAWirklichHerauslösen(EAHerauslösen); }
+			if (Bestätigung) { EA_entlassen2(EA_Nr); }
 		}
 
 
-		function EAWirklichHerauslösen(EAHerauslösen) {
+		function EA_entlassen2(EA_Nr) {
 
-			let a7EA = EA.find(elem => elem.ENr === EAHerauslösen);
+			let a7EA = EA.find(elem => elem.ENr === EA_Nr);
 			let a8EA = EA.find(elem => elem.ENr === a7EA.darüber);
 			a7EA.darüber = "";
-			let t = 0;
+			let x = 0;
 
 			for (let LUA of a8EA.UANr) {
-				if (EAHerauslösen == LUA) { a8EA.UANr.splice(t, 1); }
-				t++;
+				if (EA_Nr == LUA) { a8EA.UANr.splice(x, 1); }
+				x++;
 			}
 
 			Ansichten_aktualisieren();
 		}
 
 
-		function neuerEA(x) {
+		function neuerEA(EA_Nr) {
 
 			let nENr = Math.max(...EA.map(obj => obj.ENr)) + 1;
 
@@ -1976,7 +1971,7 @@
 			EA[neueNr] = new Object();
 			EA[neueNr]["ENr"] = nENr;
 			EA[neueNr]["UANr"] = [];
-			EA[neueNr]["darüber"] = x; // hier wird der Datensatz darüber festgelegt.
+			EA[neueNr]["darüber"] = EA_Nr; // hier wird der Datensatz darüber festgelegt.
 			EA[neueNr]["EBezeichnung"] = "n.n.";
 			EA[neueNr]["EDatum"] = "n.n.";
 			EA[neueNr]["EAnlass"] = "n.n.";
@@ -1996,33 +1991,33 @@
 			EA[neueNr]["Einzelaufträge"] = "n.n.";
 			EA[neueNr]["SMH"] = "n.n.";
 
-			if (x) {
+			if (EA_Nr) {
 				let a5EA = EA.find(elem => elem.ENr === DsNr);
 				a5EA["UANr"].push(nENr); // bei UANr. die aktuelle EA-Nr angehängen
 			}
 		}
 
 
-		function EALöschen(EntferneDsNr) {
+		function EA_löschen(EntferneDsNr) {
 
 			let Bestätigung = confirm("Soll der EA wirklich gelöscht werden? Die unterstellten UA werden ebenfalls gelöscht und können nicht wiederhergestellt werden. ");
 			if (Bestätigung) {
-				EAwirklichLöschen(EntferneDsNr);
+				EA_löschen2(EntferneDsNr);
 				Ansichten_aktualisieren();
 			}
 		}
 
 
-		function EAwirklichLöschen(EntferneEA) {
+		function EA_löschen2(EntferneEA) {
 				let IndexLöschen = IndexENr(EntferneEA);
-				if (EA[IndexLöschen].darüber) EAWirklichHerauslösen(EntferneEA); // Verbindung darüber löschen
-				EAwirklichLöschen2(EntferneEA); // erst dann die Einsätze nacheinander löschen
+				if (EA[IndexLöschen].darüber) EA_entlassen2(EntferneEA); // Verbindung darüber löschen
+				EA_löschen3(EntferneEA); // erst dann die Einsätze nacheinander löschen
 		}
 
 
-		function EAwirklichLöschen2(EntferneEA) {
+		function EA_löschen3(EntferneEA) {
 				let IndexLöschen = IndexENr(EntferneEA);
-				for (let EAL of EA[IndexLöschen].UANr) EAwirklichLöschen2(EAL); // erst eventuell vorhandene UA löschen
+				for (let EAL of EA[IndexLöschen].UANr) EA_löschen3(EAL); // erst eventuell vorhandene UA löschen
 
 				// EA löschen
 				let nDsNr = false;
@@ -2036,10 +2031,6 @@
 					}
 				}
 		}			
-
-
-
-//Einsatzabschnitte(); // Einsatzabschnitte neu darstellen
 
 		function EAplus() {
 				neuerEA(EA_select);
